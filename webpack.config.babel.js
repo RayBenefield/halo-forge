@@ -1,4 +1,3 @@
-import webpack from 'webpack';
 import path from 'path';
 
 const BUILD_DIR = path.resolve(__dirname, 'build/');
