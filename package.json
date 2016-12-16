@@ -25,6 +25,7 @@
         "lint": "eslint -c .eslintrc src/",
         "build": "babel src -d dist",
         "clean": "rimraf dist",
+        "deploy": "gh-pages -d build",
         "patch": "npm version patch -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "minor": "npm version minor -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "major": "npm version major -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit"
@@ -48,6 +49,7 @@
         "eslint-plugin-import": "^1.16.0",
         "eslint-plugin-jsx-a11y": "^2.2.3",
         "eslint-plugin-react": "^6.3.0",
+        "gh-pages": "^0.12.0",
         "gulp": "^3.9.1",
         "gulp-cached": "^1.1.0",
         "gulp-debug": "^2.1.2",
