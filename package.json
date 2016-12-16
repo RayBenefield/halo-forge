@@ -1,7 +1,7 @@
 {
     "name": "halo-forge",
     "description": "An aggregation of news, resources, tools, etc. for the Halo Forge community.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "homepage": "https://github.com/RayBenefield/halo-forge",
     "author": {
         "name": "Raymond Benefield",
