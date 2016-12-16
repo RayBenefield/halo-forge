@@ -21,6 +21,7 @@
         "npm": ">=1.4.3"
     },
     "scripts": {
+        "dev": "webpack-dev-server --hot --inline",
         "test": "jest --watch",
         "lint": "eslint -c .eslintrc src/",
         "build": "webpack -p",
@@ -63,7 +64,9 @@
         "gulp-shell": "^0.5.2",
         "jest": "^17.0.3",
         "js-beautify": "^1.6.4",
-        "rimraf": "^2.5.4"
+        "rimraf": "^2.5.4",
+        "webpack": "^1.14.0",
+        "webpack-dev-server": "^1.16.2"
     },
     "babel": {
         "presets": [
