@@ -1,11 +1,7 @@
+import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
+import Root from './containers/Root';
 import './index.html';
 
-const App = () => (
-    <div>
-        <p>Hello world from React.</p>
-    </div>
-);
-
-render(<App />, document.getElementById('app'));
+render(<Root />, document.getElementById('app'));
