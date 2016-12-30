@@ -1,9 +1,12 @@
 import React from 'react';
+import { Card, CardTitle } from 'material-ui/Card';
 
 export default ({ posts }) => (
-    <ul>
+    <div>
         {posts.map((post, i) =>
-            <li key={i}>{post.title}</li>
+            <Card key={i}>
+                <CardTitle title={post.title} />
+            </Card>
         )}
-    </ul>
+    </div>
 );
