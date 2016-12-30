@@ -3,17 +3,16 @@ import { connect } from 'react-redux';
 import { fetchPostsIfNeeded } from '../actions';
 import Refresher from '../components/Refresher';
 import Picker from '../components/Picker';
-import Posts from '../components/Posts';
 import Header from '../components/Header';
+import Content from '../components/Content';
 
-const Layout = (props) => {
-    const { dispatch, selectedSubreddit } = props;
+const Layout = ({ dispatch, selectedSubreddit, lastUpdated }) => {
     dispatch(fetchPostsIfNeeded(selectedSubreddit));
-    const { posts, isFetching, lastUpdated } = props;
     return (
         <div>
             <Header />
             <Picker />
+            <Refresher />
             <p>
                 {lastUpdated &&
                     <span>
@@ -21,35 +20,23 @@ const Layout = (props) => {
                         {' '}
                     </span>
                 }
-                <Refresher />
             </p>
-            {isFetching && posts.length === 0 &&
-                <h2>Loading...</h2>
-            }
-            {!isFetching && posts.length === 0 &&
-                <h2>Empty.</h2>
-            }
-            {posts.length > 0 &&
-                <Posts style={{ opacity: isFetching ? 0.5 : 1 }} />
-            }
+            <Content />
         </div>
     );
 };
 
 function mapStateToProps({ selectedSubreddit, postsBySubreddit }) {
     const {
-        isFetching,
         lastUpdated,
         items: posts,
     } = postsBySubreddit[selectedSubreddit] || {
-        isFetching: true,
         items: [],
     };
 
     return {
         selectedSubreddit,
         posts,
-        isFetching,
         lastUpdated,
     };
 }

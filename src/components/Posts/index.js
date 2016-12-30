@@ -1,8 +1,9 @@
+import _ from 'underscore';
 import React from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import equip from './equip';
 
-const Posts = ({ posts }) => (
+const Posts = ({ style, posts }) => (
     <div>
         {posts.map((post, i) => {
             const link = (<sub style={{ float: 'right' }}><a href={post.url}>/r/halo • 22 hours ago</a></sub>);
@@ -13,7 +14,7 @@ const Posts = ({ posts }) => (
                 )
                 : 'http://lorempixel.com/108/81/';
             return (
-                <Card key={i} style={{ width: '320px' }}>
+                <Card key={i} style={_.extend(style, { width: '400px', height: '120px' })}>
                     {link}
                     <img src={image} alt={post.title} height={81} width={101} style={{ float: 'left', padding: '8px' }} />
                     <CardHeader
