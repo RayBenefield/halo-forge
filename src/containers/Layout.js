@@ -1,80 +1,41 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
+import { fetchPostsIfNeeded } from '../actions';
+import Refresher from '../components/Refresher';
 import Picker from '../components/Picker';
 import Posts from '../components/Posts';
 import Header from '../components/Header';
 
-class Layout extends Component {
-    constructor(props) {
-        super(props);
-        this.handleRefreshClick = this.handleRefreshClick.bind(this);
-    }
-
-    componentDidMount() {
-        const { dispatch, selectedSubreddit } = this.props;
-        dispatch(fetchPostsIfNeeded(selectedSubreddit));
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.selectedSubreddit !== this.props.selectedSubreddit) {
-            const { dispatch, selectedSubreddit } = nextProps;
-            dispatch(fetchPostsIfNeeded(selectedSubreddit));
-        }
-    }
-
-    handleRefreshClick(e) {
-        e.preventDefault();
-
-        const { dispatch, selectedSubreddit } = this.props;
-        dispatch(invalidateSubreddit(selectedSubreddit));
-        dispatch(fetchPostsIfNeeded(selectedSubreddit));
-    }
-
-    render() {
-        const { posts, isFetching, lastUpdated } = this.props;
-        return (
-            <div>
-                <Header />
-                <Picker />
-                <p>
-                    {lastUpdated &&
-                        <span>
-                            Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-                            {' '}
-                        </span>
-                    }
-                    {!isFetching &&
-                        <a
-                            href="#"
-                            onClick={this.handleRefreshClick}
-                        >
-                            Refresh
-                        </a>
-                    }
-                </p>
-                {isFetching && posts.length === 0 &&
-                    <h2>Loading...</h2>
+const Layout = (props) => {
+    const { dispatch, selectedSubreddit } = props;
+    dispatch(fetchPostsIfNeeded(selectedSubreddit));
+    const { posts, isFetching, lastUpdated } = props;
+    return (
+        <div>
+            <Header />
+            <Picker />
+            <p>
+                {lastUpdated &&
+                    <span>
+                        Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
+                        {' '}
+                    </span>
                 }
-                {!isFetching && posts.length === 0 &&
-                    <h2>Empty.</h2>
-                }
-                {posts.length > 0 &&
-                    <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                        <Posts posts={posts} />
-                    </div>
-                }
-            </div>
-        );
-    }
-}
-
-Layout.propTypes = {
-    selectedSubreddit: PropTypes.string.isRequired,
-    posts: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    lastUpdated: PropTypes.number,
-    dispatch: PropTypes.func.isRequired,
+                <Refresher />
+            </p>
+            {isFetching && posts.length === 0 &&
+                <h2>Loading...</h2>
+            }
+            {!isFetching && posts.length === 0 &&
+                <h2>Empty.</h2>
+            }
+            {posts.length > 0 &&
+                <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+                    <Posts posts={posts} />
+                </div>
+            }
+        </div>
+    );
 };
 
 function mapStateToProps(state) {
