@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from './Header';
 
 const Picker = ({ value, onChange, options }) => (
     <span>
-        <h1>{value}</h1>
+        <Header />
         <select
             onChange={e => onChange(e.target.value)}
             value={value}
