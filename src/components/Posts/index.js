@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import React from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import equip from './equip';
@@ -14,7 +13,7 @@ const Posts = ({ style, posts }) => (
                 )
                 : 'http://lorempixel.com/108/81/';
             return (
-                <Card key={i} style={_.extend(style, { width: '400px', height: '120px' })}>
+                <Card key={i} style={style}>
                     {link}
                     <img src={image} alt={post.title} height={81} width={101} style={{ float: 'left', padding: '8px' }} />
                     <CardHeader

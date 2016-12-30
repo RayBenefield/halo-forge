@@ -5,6 +5,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
 export const RESIZE_LAYOUT = 'RESIZE_LAYOUT';
+export const RESIZE_ITEM = 'RESIZE_ITEM';
 
 export function resizeLayout() {
     return {

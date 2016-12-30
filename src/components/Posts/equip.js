@@ -1,7 +1,9 @@
+import _ from 'underscore';
 import { connect } from 'react-redux';
 
 export default connect(
-    ({ postsBySubreddit, selectedSubreddit }) => ({
+    ({ postsBySubreddit, selectedSubreddit, layout: { item } }, ownProps) => ({
         posts: postsBySubreddit[selectedSubreddit].items,
+        style: _.create(ownProps.style, item),
     }),
 );
