@@ -2,9 +2,10 @@ body {
     overflow-x: hidden;
     height: 100vh;
     margin: 0px;
+    background-color: #303030;
 }
 
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
 }

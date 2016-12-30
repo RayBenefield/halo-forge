@@ -7,6 +7,7 @@ import configureStore from '../configureStore';
 import AsyncApp from './AsyncApp';
 
 const store = configureStore();
+darkBaseTheme.palette.canvasColor = '#424242';
 
 export default () => (
     <Provider store={store}>
