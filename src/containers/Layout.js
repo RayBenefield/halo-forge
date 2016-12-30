@@ -30,16 +30,13 @@ const Layout = (props) => {
                 <h2>Empty.</h2>
             }
             {posts.length > 0 &&
-                <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                    <Posts posts={posts} />
-                </div>
+                <Posts style={{ opacity: isFetching ? 0.5 : 1 }} />
             }
         </div>
     );
 };
 
-function mapStateToProps(state) {
-    const { selectedSubreddit, postsBySubreddit } = state;
+function mapStateToProps({ selectedSubreddit, postsBySubreddit }) {
     const {
         isFetching,
         lastUpdated,
