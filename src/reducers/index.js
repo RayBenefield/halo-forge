@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import {
     SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,
     REQUEST_POSTS, RECEIVE_POSTS,
-} from './actions';
+} from '../actions';
 
 function selectedSubreddit(state = 'halo', action) {
     switch (action.type) {

@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
 import Picker from '../components/Picker';
 import Posts from '../components/Posts';
+import Header from '../components/Header';
 
-class AsyncApp extends Component {
+class Layout extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -39,6 +40,7 @@ class AsyncApp extends Component {
         const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
         return (
             <div>
+                <Header />
                 <Picker
                     value={selectedSubreddit}
                     onChange={this.handleChange}
@@ -76,7 +78,7 @@ class AsyncApp extends Component {
     }
 }
 
-AsyncApp.propTypes = {
+Layout.propTypes = {
     selectedSubreddit: PropTypes.string.isRequired,
     posts: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -103,4 +105,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(AsyncApp);
+export default connect(mapStateToProps)(Layout);
