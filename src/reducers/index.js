@@ -3,6 +3,7 @@ import {
     SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,
     REQUEST_POSTS, RECEIVE_POSTS,
 } from '../actions';
+import window from './windowSize';
 
 function selectedSubreddit(state = 'halo', action) {
     switch (action.type) {
@@ -54,6 +55,9 @@ function postsBySubreddit(state = { }, action) {
 }
 
 const rootReducer = combineReducers({
+    layout: combineReducers({
+        window,
+    }),
     postsBySubreddit,
     selectedSubreddit,
 });

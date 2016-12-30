@@ -4,6 +4,15 @@ export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
+export const RESIZE_LAYOUT = 'RESIZE_LAYOUT';
+
+export function resizeLayout() {
+    return {
+        type: RESIZE_LAYOUT,
+        height: window.innerHeight,
+        width: window.innerWidth,
+    };
+}
 
 export function selectSubreddit(subreddit) {
     return {
