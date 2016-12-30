@@ -5,7 +5,12 @@ export default ({ posts }) => (
     <div>
         {posts.map((post, i) => {
             const link = (<sub style={{ float: 'right' }}><a href={post.url}>/r/halo • 22 hours ago</a></sub>);
-            const image = post.preview ? post.preview.images[0].resolutions[0].url.replace(/&amp;/g, '&') : 'http://lorempixel.com/108/81/';
+            const image = post.preview
+                ? (post.preview.images[0].resolutions.length > 0
+                    ? post.preview.images[0].resolutions[0].url.replace(/&amp;/g, '&')
+                    : 'http://lorempixel.com/108/81/'
+                )
+                : 'http://lorempixel.com/108/81/';
             return (
                 <Card key={i} style={{ width: '320px' }}>
                     {link}

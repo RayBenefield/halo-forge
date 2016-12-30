@@ -1,4 +1,5 @@
 import React from 'react';
+import equip from './equip';
 
 const Picker = ({ value, onChange, options }) => (
     <span>
@@ -15,4 +16,4 @@ const Picker = ({ value, onChange, options }) => (
     </span>
 );
 
-export default Picker;
+export default equip(Picker);

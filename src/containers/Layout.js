@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
+import { fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
 import Picker from '../components/Picker';
 import Posts from '../components/Posts';
 import Header from '../components/Header';
@@ -8,7 +8,6 @@ import Header from '../components/Header';
 class Layout extends Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
         this.handleRefreshClick = this.handleRefreshClick.bind(this);
     }
 
@@ -24,10 +23,6 @@ class Layout extends Component {
         }
     }
 
-    handleChange(nextSubreddit) {
-        this.props.dispatch(selectSubreddit(nextSubreddit));
-    }
-
     handleRefreshClick(e) {
         e.preventDefault();
 
@@ -37,15 +32,11 @@ class Layout extends Component {
     }
 
     render() {
-        const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
+        const { posts, isFetching, lastUpdated } = this.props;
         return (
             <div>
                 <Header />
-                <Picker
-                    value={selectedSubreddit}
-                    onChange={this.handleChange}
-                    options={['halo', 'reactjs', 'frontend']}
-                />
+                <Picker />
                 <p>
                     {lastUpdated &&
                         <span>
