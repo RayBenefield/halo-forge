@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import React from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import muiThemeable from 'material-ui/styles/muiThemeable';
@@ -7,7 +6,13 @@ import PostsGrid from '../StaticResponsiveGrid';
 
 const Posts = ({ style, posts, muiTheme }) => {
     const postCards = posts.map((post, i) => {
-        const link = (<sub style={{ width: '100%', position: 'fixed', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}><a href={post.url}>22 hours ago • /r/halo <img src="http://lorempixel.com/16/16/" style={{ paddingLeft: '8px', verticalAlign: 'middle' }}/></a></sub>);
+        const link = (
+            <sub style={{ width: '100%', position: 'fixed', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
+                <a href={post.url}>
+                    22 hours ago • /r/halo <img src="http://lorempixel.com/16/16/" alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} />
+                </a>
+            </sub>
+        );
         const image = post.preview
             ? (post.preview.images[0].resolutions.length > 0
                 ? post.preview.images[0].resolutions[0].url.replace(/&amp;/g, '&')
@@ -21,8 +26,7 @@ const Posts = ({ style, posts, muiTheme }) => {
                     title={post.title}
                     titleStyle={{ padding: '16px', paddingTop: '8px' }}
                     actAsExpander
-                >
-                </CardHeader>
+                />
                 {link}
                 <CardText actAsExpander expandable>
                     {post.selftext}
