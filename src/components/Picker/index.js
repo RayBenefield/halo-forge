@@ -8,8 +8,8 @@ const Picker = ({ value, onChange, options }) => (
         <SelectField
             onChange={(e, i, v) => onChange(v)}
             value={value}
-            style={{ backgroundColor: '#373737' }}
             labelStyle={{ paddingLeft: '16px' }}
+            iconStyle={{ paddingRight: '16px' }}
             fullWidth
         >
             {options.map(option =>

@@ -1,8 +1,9 @@
 import React from 'react';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 import Posts from '../Posts';
 import equip from './equip';
 
-const Content = ({ isFetching, posts }) => (
+const Content = ({ isFetching, posts, lastUpdated, muiTheme }) => (
     <div>
         {isFetching && posts.length === 0 &&
             <h2>Loading...</h2>
@@ -11,9 +12,16 @@ const Content = ({ isFetching, posts }) => (
             <h2>Empty.</h2>
         }
         {posts.length > 0 &&
-            <Posts style={{ opacity: isFetching ? 0.5 : 1 }} />
+            <div>
+                {lastUpdated &&
+                    <sub style={{ padding: '16px', color: muiTheme.card.subtitleColor }}>
+                        Last updated at {new Date(lastUpdated).toLocaleTimeString()}
+                    </sub>
+                }
+                <Posts style={{ opacity: isFetching ? 0.5 : 1 }} />
+            </div>
         }
     </div>
 );
 
-export default equip(Content);
+export default muiThemeable()(equip(Content));

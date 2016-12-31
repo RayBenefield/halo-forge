@@ -9,14 +9,18 @@ import Layout from './Layout';
 
 const store = configureStore();
 
-darkBaseTheme.palette.canvasColor = '#424242';
+const customDarkTheme = getMuiTheme(darkBaseTheme);
+customDarkTheme.textField.backgroundColor = '#424242';
+customDarkTheme.paper.backgroundColor = '#424242';
+customDarkTheme.appBar.color = '#212121';
+customDarkTheme.appBar.textColor = '#FFFFFF';
 
 window.addEventListener('resize', () => store.dispatch(resizeLayout()));
 store.dispatch(resizeLayout());
 
 export default () => (
     <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <MuiThemeProvider muiTheme={customDarkTheme}>
             <Layout />
         </MuiThemeProvider>
     </Provider>
