@@ -10,9 +10,7 @@ const Posts = ({ style, posts, muiTheme }) => {
     const postCards = posts.map((post, i) => {
         const link = (
             <sub style={{ width: '100%', position: 'fixed', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
-                <a href={post.url}>
-                    22 hours ago • /r/halo <img src={rHalo} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} />
-                </a>
+                22 hours ago • /r/halo <img src={rHalo} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} />
             </sub>
         );
         const image = post.preview
@@ -23,16 +21,15 @@ const Posts = ({ style, posts, muiTheme }) => {
             : rHaloImage;
         return (
             <Card key={i} style={style}>
-                <img src={image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
-                <CardHeader
-                    title={post.title}
-                    titleStyle={{ padding: '16px', paddingTop: '8px' }}
-                    actAsExpander
-                />
-                {link}
-                <CardText actAsExpander expandable>
-                    {post.selftext}
-                </CardText>
+                <a href={post.url}>
+                    <img src={image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
+                    <CardHeader
+                        title={post.title}
+                        titleStyle={{ padding: '16px', paddingTop: '8px' }}
+                        actAsExpander
+                    />
+                    {link}
+                </a>
             </Card>
         );
     });
