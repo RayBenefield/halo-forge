@@ -1,11 +1,13 @@
+import _ from 'underscore';
 import React from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import PostsGrid from '../StaticResponsiveGrid';
 
-const Posts = ({ style, posts }) => {
+const Posts = ({ style, posts, muiTheme }) => {
     const postCards = posts.map((post, i) => {
-        const link = (<sub style={{ float: 'right' }}><a href={post.url}>/r/halo • 22 hours ago</a></sub>);
+        const link = (<sub style={{ width: '100%', position: 'fixed', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}><a href={post.url}>22 hours ago • /r/halo <img src="http://lorempixel.com/16/16/" style={{ paddingLeft: '8px', verticalAlign: 'middle' }}/></a></sub>);
         const image = post.preview
             ? (post.preview.images[0].resolutions.length > 0
                 ? post.preview.images[0].resolutions[0].url.replace(/&amp;/g, '&')
@@ -14,14 +16,14 @@ const Posts = ({ style, posts }) => {
             : 'http://lorempixel.com/108/81/';
         return (
             <Card key={i} style={style}>
-                {link}
-                <img src={image} alt={post.title} height={81} width={101} style={{ float: 'left', padding: '8px' }} />
+                <img src={image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
                 <CardHeader
                     title={post.title}
-                    subtitle={post.author}
+                    titleStyle={{ padding: '16px', paddingTop: '8px' }}
                     actAsExpander
-                    showExpandableButton
-                />
+                >
+                </CardHeader>
+                {link}
                 <CardText actAsExpander expandable>
                     {post.selftext}
                 </CardText>
@@ -39,4 +41,4 @@ const Posts = ({ style, posts }) => {
     );
 };
 
-export default equip(Posts);
+export default muiThemeable()(equip(Posts));
