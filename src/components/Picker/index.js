@@ -6,7 +6,7 @@ import equip from './equip';
 const Picker = ({ value, onChange, options }) => (
     <span>
         <SelectField
-            floatingLabelText="Subreddit"
+            floatingLabelText="Source"
             onChange={(e, i, v) => onChange(v)}
             value={value}
         >

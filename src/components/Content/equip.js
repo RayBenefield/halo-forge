@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
 export default connect(
-    ({ selectedSubreddit, postsBySubreddit }) => {
+    ({ selectedSource, postsBySource }) => {
         const {
             isFetching,
             items: posts,
-        } = postsBySubreddit[selectedSubreddit] || {
+        } = postsBySource[selectedSource] || {
             isFetching: true,
             items: [],
         };

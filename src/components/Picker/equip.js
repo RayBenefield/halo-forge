@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { selectSubreddit } from '../../actions';
+import { selectSource } from '../../actions';
 
 export default connect(
     state => ({
-        value: state.selectedSubreddit,
+        value: state.selectedSource,
         options: ['halo', 'forge', 'reactjs', 'frontend'],
     }),
     dispatch => ({
-        onChange: (nextSubreddit) => {
-            dispatch(selectSubreddit(nextSubreddit));
+        onChange: (nextSource) => {
+            dispatch(selectSource(nextSource));
         },
     })
 );

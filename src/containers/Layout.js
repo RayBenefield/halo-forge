@@ -6,8 +6,8 @@ import Picker from '../components/Picker';
 import Header from '../components/Header';
 import Content from '../components/Content';
 
-const Layout = ({ dispatch, selectedSubreddit, lastUpdated }) => {
-    dispatch(fetchPostsIfNeeded(selectedSubreddit));
+const Layout = ({ dispatch, selectedSource, lastUpdated }) => {
+    dispatch(fetchPostsIfNeeded(selectedSource));
     return (
         <div>
             <Header />
@@ -26,16 +26,16 @@ const Layout = ({ dispatch, selectedSubreddit, lastUpdated }) => {
     );
 };
 
-function mapStateToProps({ selectedSubreddit, postsBySubreddit }) {
+function mapStateToProps({ selectedSource, postsBySource }) {
     const {
         lastUpdated,
         items: posts,
-    } = postsBySubreddit[selectedSubreddit] || {
+    } = postsBySource[selectedSource] || {
         items: [],
     };
 
     return {
-        selectedSubreddit,
+        selectedSource,
         posts,
         lastUpdated,
     };

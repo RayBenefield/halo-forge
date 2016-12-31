@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { invalidateSubreddit, fetchPostsIfNeeded } from '../../actions';
+import { invalidateSource, fetchPostsIfNeeded } from '../../actions';
 
 export default connect(
     state => ({
-        selectedSubreddit: state.selectedSubreddit,
+        selectedSource: state.selectedSource,
     }),
     dispatch => ({
         dispatch,
     }),
-    ({ selectedSubreddit }, { dispatch }) => ({
+    ({ selectedSource }, { dispatch }) => ({
         refresh: () => {
-            dispatch(invalidateSubreddit(selectedSubreddit));
-            dispatch(fetchPostsIfNeeded(selectedSubreddit));
+            dispatch(invalidateSource(selectedSource));
+            dispatch(fetchPostsIfNeeded(selectedSource));
         },
     })
 );

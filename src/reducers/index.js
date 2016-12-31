@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import {
-    SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,
+    SELECT_SOURCE, INVALIDATE_SOURCE,
     REQUEST_POSTS, RECEIVE_POSTS,
 } from '../actions';
 import layout from './layout';
 
-function selectedSubreddit(state = 'halo', action) {
+function selectedSource(state = 'halo', action) {
     switch (action.type) {
-        case SELECT_SUBREDDIT:
-            return action.subreddit;
+        case SELECT_SOURCE:
+            return action.source;
         default:
             return state;
     }
@@ -20,7 +20,7 @@ function posts(state = {
     items: [],
 }, action) {
     switch (action.type) {
-        case INVALIDATE_SUBREDDIT:
+        case INVALIDATE_SOURCE:
             return Object.assign({}, state, {
                 didInvalidate: true,
             });
@@ -41,13 +41,13 @@ function posts(state = {
     }
 }
 
-function postsBySubreddit(state = { }, action) {
+function postsBySource(state = { }, action) {
     switch (action.type) {
-        case INVALIDATE_SUBREDDIT:
+        case INVALIDATE_SOURCE:
         case RECEIVE_POSTS:
         case REQUEST_POSTS:
             return Object.assign({}, state, {
-                [action.subreddit]: posts(state[action.subreddit], action),
+                [action.source]: posts(state[action.source], action),
             });
         default:
             return state;
@@ -56,8 +56,8 @@ function postsBySubreddit(state = { }, action) {
 
 const rootReducer = combineReducers({
     layout,
-    postsBySubreddit,
-    selectedSubreddit,
+    postsBySource,
+    selectedSource,
 });
 
 export default rootReducer;
