@@ -4,17 +4,19 @@ import MenuItem from 'material-ui/MenuItem';
 import equip from './equip';
 
 const Picker = ({ value, onChange, options }) => (
-    <span>
+    <div style={{ width: '100%' }}>
         <SelectField
-            floatingLabelText="Source"
             onChange={(e, i, v) => onChange(v)}
             value={value}
+            style={{ backgroundColor: '#373737' }}
+            labelStyle={{ paddingLeft: '16px' }}
+            fullWidth
         >
             {options.map(option =>
                 <MenuItem value={option} primaryText={option} key={option} />
             )}
         </SelectField>
-    </span>
+    </div>
 );
 
 export default equip(Picker);
