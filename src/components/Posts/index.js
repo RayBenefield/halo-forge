@@ -3,13 +3,14 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import PostsGrid from '../StaticResponsiveGrid';
+import rHalo from './r-halo.png';
 
 const Posts = ({ style, posts, muiTheme }) => {
     const postCards = posts.map((post, i) => {
         const link = (
             <sub style={{ width: '100%', position: 'fixed', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
                 <a href={post.url}>
-                    22 hours ago • /r/halo <img src="http://lorempixel.com/16/16/" alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} />
+                    22 hours ago • /r/halo <img src={rHalo} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} />
                 </a>
             </sub>
         );
