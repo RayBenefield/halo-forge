@@ -4,6 +4,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import PostsGrid from '../StaticResponsiveGrid';
 import rHalo from './r-halo.png';
+import rHaloImage from './r-halo-image.png';
 
 const Posts = ({ style, posts, muiTheme }) => {
     const postCards = posts.map((post, i) => {
@@ -17,9 +18,9 @@ const Posts = ({ style, posts, muiTheme }) => {
         const image = post.preview
             ? (post.preview.images[0].resolutions.length > 0
                 ? post.preview.images[0].resolutions[0].url.replace(/&amp;/g, '&')
-                : 'http://lorempixel.com/108/81/'
+                : rHaloImage
             )
-            : 'http://lorempixel.com/108/81/';
+            : rHaloImage;
         return (
             <Card key={i} style={style}>
                 <img src={image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
