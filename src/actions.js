@@ -44,21 +44,33 @@ function requestPosts(source) {
     };
 }
 
-function receivePosts(source, json) {
+function receivePosts(source, posts) {
     return {
         type: RECEIVE_POSTS,
         source,
-        posts: json.data.children.map(child => child.data),
+        posts,
         receivedAt: Date.now(),
     };
 }
 
-function fetchPosts(source) {
+function fetchRedditPosts(subreddit) {
     return (dispatch) => {
-        dispatch(requestPosts(source));
-        return fetch(`https://www.reddit.com/r/${source}.json`)
+        dispatch(requestPosts(subreddit));
+        return fetch(`https://www.reddit.com/r/${subreddit}.json`)
             .then(response => response.json())
-            .then(json => dispatch(receivePosts(source, json)));
+            .then(json => dispatch(receivePosts(
+                subreddit,
+                json.data.children.map(child => child.data)
+            )));
+    };
+}
+
+function fetchPosts(source) {
+    if (source === 'halo' || source === 'forge') {
+        return fetchRedditPosts(source);
+    }
+    return (dispatch) => {
+        dispatch(receivePosts(source, []));
     };
 }
 
