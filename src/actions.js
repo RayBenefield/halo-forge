@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch';
+import rHaloSource from './r-halo.png';
+import rHaloImage from './r-halo-image.png';
 
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
@@ -60,7 +62,26 @@ function fetchRedditPosts(subreddit) {
             .then(response => response.json())
             .then(json => dispatch(receivePosts(
                 subreddit,
-                json.data.children.map(child => child.data)
+                json.data.children.map((child) => {
+                    const post = child.data;
+                    // eslint-disable-next-line no-nested-ternary
+                    const image = post.preview
+                        ? (post.preview.images[0].resolutions.length > 0
+                            ? post.preview.images[0].resolutions[0].url.replace(/&amp;/g, '&')
+                            : post.preview.images[0].source.url
+                        )
+                        : rHaloImage;
+                    return {
+                        id: post.id,
+                        url: post.url,
+                        title: post.title,
+                        image,
+                        source: `/r/${subreddit}`,
+                        sourceImage: rHaloSource,
+                        sourceUrl: `https://www.reddit.com/${post.permalink}`,
+                        added: post.created_utc * 1000,
+                    };
+                })
             )));
     };
 }
