@@ -1,6 +1,5 @@
-import _ from 'underscore';
 import { connect } from 'react-redux';
-import { NEW, ADDED, DROPPED, filter } from '../../../actions';
+import { filter } from '../../../actions';
 
 export default connect(
     state => ({
@@ -11,6 +10,6 @@ export default connect(
     }),
     ({ status }, { dispatch }) => ({
         status,
-        filter: () => dispatch(filter([NEW, ADDED, DROPPED][_.random(0, 2)])),
+        filter: (e, value) => dispatch(filter(value)),
     }),
 );
