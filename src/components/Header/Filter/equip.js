@@ -4,14 +4,13 @@ import { NEW, ADDED, DROPPED, filter } from '../../../actions';
 
 export default connect(
     state => ({
-        selectedSource: state.selectedSource,
+        status: state.filter,
     }),
     dispatch => ({
         dispatch,
     }),
-    ({ selectedSource }, { dispatch }) => ({
-        filter: () => {
-            dispatch(filter([NEW, ADDED, DROPPED][_.random(0, 2)]));
-        },
-    })
+    ({ status }, { dispatch }) => ({
+        status,
+        filter: () => dispatch(filter([NEW, ADDED, DROPPED][_.random(0, 2)])),
+    }),
 );
