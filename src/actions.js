@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import uuid from 'node-uuid';
 import fetch from 'isomorphic-fetch';
 import rHaloSource from './r-halo.png';
@@ -12,10 +13,10 @@ export const RESIZE_ITEM = 'RESIZE_ITEM';
 export const FILTER = 'FILTER';
 
 export const NEW = 'NEW';
+export const ADDED = 'ADDED';
+export const DROPPED = 'DROPPED';
 
 // Statuses not yet uesed.
-// export const ADDED = 'ADDED';
-// export const DROPPED = 'DROPPED';
 // export const DELAYED = 'DELAYED';
 // export const SAVED = 'SAVED';
 
@@ -90,7 +91,7 @@ function fetchRedditPosts(subreddit) {
                         : rHaloImage;
                     return {
                         id: uuid.v4(),
-                        status: NEW,
+                        status: [NEW, ADDED, DROPPED][_.random(0, 2)],
                         url: post.url,
                         title: post.title,
                         image,
