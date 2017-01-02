@@ -1,9 +1,10 @@
 import _ from 'underscore';
 import { connect } from 'react-redux';
+import { getVisibleItems } from '../../selectors';
 
 export default connect(
-    ({ postsBySource, selectedSource, layout: { item } }, ownProps) => ({
-        posts: postsBySource[selectedSource].items,
-        style: _.extend(ownProps.style, item),
+    (state, ownProps) => ({
+        posts: getVisibleItems(state),
+        style: _.extend(ownProps.style, state.layout.item),
     }),
 );

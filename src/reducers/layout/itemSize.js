@@ -10,4 +10,3 @@ export default (state = { width: 400, height: 120 }, action) => {
     }
     return state;
 };
-
