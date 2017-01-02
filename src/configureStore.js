@@ -8,7 +8,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const loggerMiddleware = createLogger();
 
 export default function configureStore(preloadedState) {
-    return createStore(
+    const store = createStore(
         rootReducer,
         preloadedState,
         composeEnhancers(applyMiddleware(
@@ -16,4 +16,15 @@ export default function configureStore(preloadedState) {
             loggerMiddleware
         )),
     );
+
+    // Enable Webpack hot module replacement for reducers
+    if (module.hot) {
+        module.hot.accept('./reducers', () => {
+            // eslint-disable-next-line global-require,import/newline-after-import
+            const nextRootReducer = require('./reducers');
+            store.replaceReducer(nextRootReducer);
+        });
+    }
+
+    return store;
 }
