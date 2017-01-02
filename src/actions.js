@@ -9,6 +9,7 @@ export const SELECT_SOURCE = 'SELECT_SOURCE';
 export const INVALIDATE_SOURCE = 'INVALIDATE_SOURCE';
 export const RESIZE_LAYOUT = 'RESIZE_LAYOUT';
 export const RESIZE_ITEM = 'RESIZE_ITEM';
+export const FILTER = 'FILTER';
 
 export const NEW = 'NEW';
 
@@ -17,6 +18,13 @@ export const NEW = 'NEW';
 // export const DROPPED = 'DROPPED';
 // export const DELAYED = 'DELAYED';
 // export const SAVED = 'SAVED';
+
+export function filter(status = NEW) {
+    return {
+        type: FILTER,
+        status,
+    };
+}
 
 export function resizeItem() {
     return {
