@@ -4,6 +4,7 @@ import {
     REQUEST_POSTS, RECEIVE_POSTS,
 } from '../actions';
 import layout from './layout';
+import filter from './filter';
 
 function selectedSource(state = 'halo', action) {
     switch (action.type) {
@@ -58,6 +59,7 @@ const rootReducer = combineReducers({
     layout,
     postsBySource,
     selectedSource,
+    filter,
 });
 
 export default rootReducer;

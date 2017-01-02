@@ -1,3 +1,4 @@
+import uuid from 'node-uuid';
 import fetch from 'isomorphic-fetch';
 import rHaloSource from './r-halo.png';
 import rHaloImage from './r-halo-image.png';
@@ -8,6 +9,14 @@ export const SELECT_SOURCE = 'SELECT_SOURCE';
 export const INVALIDATE_SOURCE = 'INVALIDATE_SOURCE';
 export const RESIZE_LAYOUT = 'RESIZE_LAYOUT';
 export const RESIZE_ITEM = 'RESIZE_ITEM';
+
+export const NEW = 'NEW';
+
+// Statuses not yet uesed.
+// export const ADDED = 'ADDED';
+// export const DROPPED = 'DROPPED';
+// export const DELAYED = 'DELAYED';
+// export const SAVED = 'SAVED';
 
 export function resizeItem() {
     return {
@@ -72,11 +81,13 @@ function fetchRedditPosts(subreddit) {
                         )
                         : rHaloImage;
                     return {
-                        id: post.id,
+                        id: uuid.v4(),
+                        status: NEW,
                         url: post.url,
                         title: post.title,
                         image,
                         source: `/r/${subreddit}`,
+                        sourceId: post.id,
                         sourceImage: rHaloSource,
                         sourceUrl: `https://www.reddit.com/${post.permalink}`,
                         added: post.created_utc * 1000,
