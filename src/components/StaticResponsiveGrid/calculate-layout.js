@@ -6,9 +6,16 @@ const calculateLayout = (layoutCount, itemCount, itemWidth) => {
         layouts: {},
     };
     for (let i = 0; i < layoutCount; i++) {
-        layoutConfig.widths.push((i + 1) * itemWidth);
+        const width = (i + 1) * itemWidth + (i * 10);
+        layoutConfig.widths.push(width);
         layoutConfig.cols[i] = i + 1;
-        layoutConfig.breakpoints[i] = i * itemWidth;
+
+        if (i === 0) {
+            layoutConfig.breakpoints[i] = 0;
+        } else {
+            layoutConfig.breakpoints[i] = i * itemWidth + ((i + 1) * 10);
+        }
+
         layoutConfig.layouts[i] = [];
 
         for (let j = 0; j < itemCount; j++) {

@@ -26,7 +26,7 @@ const StaticResponsiveGrid = ({ window, maxWidth, itemWidth, itemHeight, items }
     return (
         <div className="layout" style={{ width: `${width}px`, margin: 'auto' }}>
             <Responsive
-                width={width}
+                width={width + 20}
                 className="layout"
                 autoSize={false}
                 layouts={layoutConfig.layouts}
