@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
-import { fetchPostsIfNeeded } from '../actions';
+import { fetchPosts } from '../actions';
 import Picker from '../components/Picker';
 import Header from '../components/Header';
 import Content from '../components/Content';
 
 const Layout = ({ dispatch, selectedSource }) => {
-    dispatch(fetchPostsIfNeeded(selectedSource));
+    dispatch(fetchPosts(selectedSource));
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <div style={{ height: '100px', flex: 0, paddingBottom: '12px' }}>

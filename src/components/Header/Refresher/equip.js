@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { invalidateSource, fetchPostsIfNeeded } from '../../../actions';
+import { fetchPosts } from '../../../actions';
 
 export default connect(
     state => ({
@@ -10,8 +10,7 @@ export default connect(
     }),
     ({ selectedSource }, { dispatch }) => ({
         refresh: () => {
-            dispatch(invalidateSource(selectedSource));
-            dispatch(fetchPostsIfNeeded(selectedSource));
+            dispatch(fetchPosts(selectedSource));
         },
     })
 );
