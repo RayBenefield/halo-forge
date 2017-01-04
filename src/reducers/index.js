@@ -1,9 +1,9 @@
-import _ from 'underscore';
 import { combineReducers } from 'redux';
 import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions';
 import layout from './layout';
 import filter from './filter';
 import selectedSource from './selectedSource';
+import posts from './posts';
 
 function isFetching(state = false, action) {
     switch (action.type) {
@@ -11,19 +11,6 @@ function isFetching(state = false, action) {
             return true;
         case RECEIVE_POSTS:
             return false;
-        default:
-            return state;
-    }
-}
-
-function posts(state = { }, action) {
-    switch (action.type) {
-        case RECEIVE_POSTS:
-            return Object.assign(
-                {},
-                state,
-                _.object(_.map(action.posts, item => [item.id, item]))
-            );
         default:
             return state;
     }
