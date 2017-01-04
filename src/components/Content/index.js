@@ -3,7 +3,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 import Posts from '../Posts';
 import equip from './equip';
 
-const Content = ({ isFetching, posts, lastUpdated, muiTheme }) => (
+const Content = ({ isFetching, posts, postCount, lastUpdated, muiTheme }) => (
     <div>
         {isFetching && posts.length === 0 &&
             <h2>Loading...</h2>
@@ -11,7 +11,7 @@ const Content = ({ isFetching, posts, lastUpdated, muiTheme }) => (
         {!isFetching && posts.length === 0 &&
             <h2>Empty.</h2>
         }
-        {posts.length > 0 &&
+        {postCount > 0 &&
             <div>
                 {lastUpdated &&
                     <sub style={{ padding: '16px', color: muiTheme.card.subtitleColor }}>

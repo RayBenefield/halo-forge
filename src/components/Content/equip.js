@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
 export default connect(
-    ({ posts }) => ({
+    ({ posts, isFetching }) => ({
         posts,
-        isFetching: true,
+        postCount: Object.keys(posts).length,
+        isFetching,
         lastUpdated: new Date(),
     }),
 );

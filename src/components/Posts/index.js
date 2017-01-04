@@ -1,17 +1,18 @@
+import _ from 'underscore';
 import React from 'react';
 import equip from './equip';
 import PostsGrid from '../StaticResponsiveGrid';
 import Post from './Post';
 
 const Posts = ({ style, posts, added }) => {
-    const postCards = posts.map((post, index) => {
+    const postCards = _.mapObject(posts, (post, id) => {
         const props = {
             post,
             style,
             added,
         };
         return (
-            <div key={index}>
+            <div key={id}>
                 <Post {...props} />
             </div>
         );
@@ -22,7 +23,7 @@ const Posts = ({ style, posts, added }) => {
             itemWidth={style.width}
             itemHeight={style.height}
             maxWidth={1600}
-            items={postCards}
+            items={_.values(postCards)}
         />
     );
 };

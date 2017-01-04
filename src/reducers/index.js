@@ -1,8 +1,19 @@
 import _ from 'underscore';
 import { combineReducers } from 'redux';
-import { SELECT_SOURCE, RECEIVE_POSTS } from '../actions';
+import { SELECT_SOURCE, REQUEST_POSTS, RECEIVE_POSTS } from '../actions';
 import layout from './layout';
 import filter from './filter';
+
+function isFetching(state = false, action) {
+    switch (action.type) {
+        case REQUEST_POSTS:
+            return true;
+        case RECEIVE_POSTS:
+            return false;
+        default:
+            return state;
+    }
+}
 
 function selectedSource(state = 'halo', action) {
     switch (action.type) {
@@ -29,6 +40,7 @@ function posts(state = { }, action) {
 const rootReducer = combineReducers({
     layout,
     posts,
+    isFetching,
     selectedSource,
     filter,
 });
