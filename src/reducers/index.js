@@ -1,8 +1,9 @@
 import _ from 'underscore';
 import { combineReducers } from 'redux';
-import { SELECT_SOURCE, REQUEST_POSTS, RECEIVE_POSTS } from '../actions';
+import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions';
 import layout from './layout';
 import filter from './filter';
+import selectedSource from './selectedSource';
 
 function isFetching(state = false, action) {
     switch (action.type) {
@@ -10,15 +11,6 @@ function isFetching(state = false, action) {
             return true;
         case RECEIVE_POSTS:
             return false;
-        default:
-            return state;
-    }
-}
-
-function selectedSource(state = 'halo', action) {
-    switch (action.type) {
-        case SELECT_SOURCE:
-            return action.source;
         default:
             return state;
     }
