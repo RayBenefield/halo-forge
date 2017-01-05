@@ -5,14 +5,16 @@ import PostsGrid from '../StaticResponsiveGrid';
 import Post from './Post';
 
 const Posts = ({ style, posts, added }) => {
-    const postCards = _.mapObject(posts, (post, id) => {
+    let i = -1;
+    const postCards = _.mapObject(posts, (post) => {
         const props = {
             post,
             style,
             added,
         };
+        i++;
         return (
-            <div key={id}>
+            <div key={i}>
                 <Post {...props} />
             </div>
         );
