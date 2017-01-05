@@ -1,5 +1,4 @@
 import _ from 'underscore';
-import uuid from 'node-uuid';
 import { NEW, ADDED, DROPPED } from './actions';
 import rHaloImage from './r-halo-image.png';
 import rHaloSource from './r-halo.png';
@@ -15,12 +14,12 @@ export default {
             )
             : rHaloImage;
         return {
-            id: uuid.v4(),
             status: [NEW, ADDED, DROPPED][_.random(0, 2)],
             url: post.url,
             title: post.title,
             image,
-            source: `/r/${subreddit}`,
+            source: 'reddit',
+            subreddit,
             sourceId: post.id,
             sourceImage: rHaloSource,
             sourceUrl: `https://www.reddit.com/${post.permalink}`,
