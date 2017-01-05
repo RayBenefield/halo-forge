@@ -17,6 +17,10 @@ const config = {
                 loaders: ['react-hot', 'babel'],
             },
             {
+                test: /\.json$/,
+                loaders: ['json'],
+            },
+            {
                 test: /\.html$/,
                 loader: 'file?name=[name].[ext]',
             },
