@@ -70745,12 +70745,10 @@
 	    moveLeft: function moveLeft(e, x) {
 	        this.setState({ left: -x });
 	    },
-	    swipedLeft: function swipedLeft(e, x) {
-	        console.log('setting');
+	    swipedLeft: function swipedLeft() {
 	        this.setState({ left: 0 });
 	    },
-	    swipedRight: function swipedRight(e, x) {
-	        console.log('setting');
+	    swipedRight: function swipedRight() {
 	        this.setState({ left: 0 });
 	    },
 	    render: function render() {
@@ -92157,4 +92155,3 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle.js.map
