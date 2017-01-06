@@ -70735,7 +70735,7 @@
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
 	    getInitialState: function getInitialState() {
-	        return { left: 0, transition: smooth };
+	        return { left: 0, transition: smooth, opacity: 1 };
 	    },
 	    move: function move(e) {
 	        var delta = e.nativeEvent.touches[0].clientX - this.state.start;
