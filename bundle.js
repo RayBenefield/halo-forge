@@ -70739,7 +70739,7 @@
 	    },
 	    move: function move(e) {
 	        var delta = e.nativeEvent.touches[0].clientX - this.state.start;
-	        this.setState({ left: delta, opacity: 1 - Math.abs(delta) / 400 });
+	        this.setState({ left: delta, opacity: 1 - delta / 400 });
 	    },
 	    swiped: function swiped() {
 	        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
