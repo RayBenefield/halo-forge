@@ -19,9 +19,19 @@ const Post = React.createClass({
     },
     swiped() {
         if (this.state.right > 30) {
-            this.add();
+            setTimeout(() => {
+                this.add();
+                this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
+            }, 1000);
+            this.setState({ right: 400, start: 0, transition: smooth, opacity: 0 });
+            return;
         } else if (this.state.right < -30) {
-            this.drop();
+            setTimeout(() => {
+                this.drop();
+                this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
+            }, 1000);
+            this.setState({ right: -400, start: 0, transition: smooth, opacity: 0 });
+            return;
         }
         this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
     },
