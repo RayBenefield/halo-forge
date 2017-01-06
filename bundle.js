@@ -70739,13 +70739,13 @@
 	    },
 	    move: function move(e) {
 	        var delta = e.nativeEvent.touches[0].clientX - this.state.start;
-	        this.setState({ left: delta, opacity: 1 - Math.abs(delta) / 400 - 0.2 });
+	        this.setState({ left: delta, opacity: 1 - Math.abs(delta) / 400 });
 	    },
 	    swiped: function swiped() {
 	        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
 	    },
 	    start: function start(e) {
-	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
+	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast });
 	    },
 	    render: function render() {
 	        var _props = this.props,
