@@ -70735,14 +70735,14 @@
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
 	    getInitialState: function getInitialState() {
-	        return { left: 0, transition: smooth, opacity: 1 };
+	        return { left: 0, transition: smooth };
 	    },
 	    move: function move(e) {
 	        var delta = e.nativeEvent.touches[0].clientX - this.state.start;
-	        this.setState({ left: delta, opacity: 1 - delta / 400 });
+	        this.setState({ left: delta });
 	    },
 	    swiped: function swiped() {
-	        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
+	        this.setState({ left: 0, start: 0, transition: smooth });
 	    },
 	    start: function start(e) {
 	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast });
@@ -70754,8 +70754,7 @@
 	            muiTheme = _props.muiTheme;
 	        var _state = this.state,
 	            left = _state.left,
-	            transition = _state.transition,
-	            opacity = _state.opacity;
+	            transition = _state.transition;
 	
 	        var link = _react2.default.createElement(
 	            'sub',
@@ -70775,7 +70774,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition, opacity: opacity }, _underscore2.default.omit(style, 'opacity')) },
+	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, _underscore2.default.omit(style, 'opacity')) },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
