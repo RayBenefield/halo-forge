@@ -70731,7 +70731,7 @@
 	var time = __webpack_require__(1222)();
 	
 	var smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
-	var fast = 'all 1ms';
+	var fast = 'all 1ms linear';
 	
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
