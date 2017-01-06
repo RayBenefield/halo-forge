@@ -70730,7 +70730,7 @@
 	var time = __webpack_require__(1222)();
 	
 	var smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
-	var fast = 'all 1ms';
+	var fast = '';
 	
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
@@ -70739,13 +70739,13 @@
 	    },
 	    move: function move(e) {
 	        var delta = e.nativeEvent.touches[0].clientX - this.state.start;
-	        this.setState({ left: delta, opacity: 1 - delta / 400 });
+	        this.setState({ left: delta, opacity: 1 - Math.abs(delta) / 400 - 0.2 });
 	    },
 	    swiped: function swiped() {
 	        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
 	    },
 	    start: function start(e) {
-	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast });
+	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
 	    },
 	    render: function render() {
 	        var _props = this.props,
