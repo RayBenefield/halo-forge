@@ -70769,7 +70769,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: _underscore2.default.extend({ marginLeft: left + 'px' }, style) },
+	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: '' }, style) },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
