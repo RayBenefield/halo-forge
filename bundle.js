@@ -70689,9 +70689,8 @@
 	        style = _ref.style;
 	    var dispatch = _ref2.dispatch;
 	    return _underscore2.default.extend({
-	        style: style,
-	        hello: 'test'
-	    }, _underscore2.default.omit(ownProps, 'style'));
+	        style: style
+	    }, ownProps);
 	});
 	
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/RayBenefield/Development/halo-forge/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "equip.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
@@ -70736,16 +70735,17 @@
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
 	    getInitialState: function getInitialState() {
-	        return { left: 0, transition: smooth };
+	        return { left: 0, transition: smooth, opacity: 1 };
 	    },
 	    move: function move(e) {
-	        this.setState({ left: e.nativeEvent.touches[0].clientX - this.state.start });
+	        var delta = e.nativeEvent.touches[0].clientX - this.state.start;
+	        this.setState({ left: delta, opacity: 1 - Math.abs(delta) / 400 - 0.2 });
 	    },
 	    swiped: function swiped() {
-	        this.setState({ left: 0, start: 0, transition: smooth });
+	        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
 	    },
 	    start: function start(e) {
-	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast });
+	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
 	    },
 	    render: function render() {
 	        var _props = this.props,
@@ -70754,8 +70754,11 @@
 	            muiTheme = _props.muiTheme;
 	        var _state = this.state,
 	            left = _state.left,
-	            transition = _state.transition;
+	            transition = _state.transition,
+	            opacity = _state.opacity;
 	
+	        var computedStyle = _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, _underscore2.default.omit(style, 'opacity'));
+	        computedStyle.opacity = opacity === 1 ? style.opacity : opacity;
 	        var link = _react2.default.createElement(
 	            'sub',
 	            { style: { width: '100%', position: 'absolute', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' } },
@@ -70774,7 +70777,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, style) },
+	                { style: computedStyle },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
@@ -71617,12 +71620,6 @@
 	                    var newId = _nodeUuid2.default.v4();
 	                    return [newId, _underscore2.default.extend(item, { id: newId })];
 	                })));
-	            }
-	        case 'MOVE_ITEM':
-	            {
-	                var newState = _underscore2.default.clone(state);
-	                newState[action.id].style = { marginLeft: action.x + 'px' };
-	                return newState;
 	            }
 	        default:
 	            return state;
