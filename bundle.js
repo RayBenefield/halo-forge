@@ -70730,7 +70730,7 @@
 	var time = __webpack_require__(1222)();
 	
 	var smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
-	var fast = 'all 1ms';
+	var fast = '';
 	
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
@@ -70775,7 +70775,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, _underscore2.default.omit(style, 'opacity')) },
+	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition, opacity: opacity }, _underscore2.default.omit(style, 'opacity')) },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
