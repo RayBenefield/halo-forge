@@ -70731,6 +70731,7 @@
 	var time = __webpack_require__(1222)();
 	
 	var smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
+	var fast = 'all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
 	
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
@@ -70744,7 +70745,7 @@
 	        this.setState({ left: 0, start: 0, transition: smooth });
 	    },
 	    start: function start(e) {
-	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: '' });
+	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast });
 	    },
 	    render: function render() {
 	        var _props = this.props,
