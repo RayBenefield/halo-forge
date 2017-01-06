@@ -70739,16 +70739,16 @@
 	    getInitialState: function getInitialState() {
 	        return { left: 0 };
 	    },
-	    moveRight: function moveRight(e) {
-	        this.setState({ left: e.nativeEvent.touches[0].clientX });
+	    moveRight: function moveRight(e, x) {
+	        this.setState({ left: x });
 	    },
 	    moveLeft: function moveLeft(e, x) {
 	        this.setState({ left: -x });
 	    },
-	    swipedLeft: function swipedLeft() {
+	    swipedLeft: function swipedLeft(e, x) {
 	        this.setState({ left: 0 });
 	    },
-	    swipedRight: function swipedRight() {
+	    swipedRight: function swipedRight(e, x) {
 	        this.setState({ left: 0 });
 	    },
 	    render: function render() {
@@ -70772,8 +70772,8 @@
 	            )
 	        );
 	        return _react2.default.createElement(
-	            'div',
-	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.moveRight, onTouchEnd: this.swipedLeft },
+	            _reactSwipeable2.default,
+	            { style: { position: 'relative', display: 'inline-block' }, onSwipingRight: this.moveRight, onSwipingLeft: this.moveLeft, onSwipedRight: this.swipedRight, onSwipedLeft: this.swipedLeft, trackMouse: true, delay: 0 },
 	            _react2.default.createElement(
 	                _Card.Card,
 	                { style: _underscore2.default.extend({ marginLeft: left + 'px' }, style) },
