@@ -70730,26 +70730,30 @@
 	
 	var time = __webpack_require__(1222)();
 	
+	var smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
+	
 	var Post = _react2.default.createClass({
 	    displayName: 'Post',
 	    getInitialState: function getInitialState() {
-	        return { left: 0 };
+	        return { left: 0, transition: smooth };
 	    },
 	    move: function move(e) {
 	        this.setState({ left: e.nativeEvent.touches[0].clientX - this.state.start });
 	    },
 	    swiped: function swiped() {
-	        this.setState({ left: 0, start: 0 });
+	        this.setState({ left: 0, start: 0, transition: smooth });
 	    },
 	    start: function start(e) {
-	        this.setState({ start: e.nativeEvent.touches[0].clientX });
+	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: '' });
 	    },
 	    render: function render() {
 	        var _props = this.props,
 	            post = _props.post,
 	            style = _props.style,
 	            muiTheme = _props.muiTheme;
-	        var left = this.state.left;
+	        var _state = this.state,
+	            left = _state.left,
+	            transition = _state.transition;
 	
 	        var link = _react2.default.createElement(
 	            'sub',
@@ -70769,7 +70773,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: '' }, style) },
+	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, style) },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
