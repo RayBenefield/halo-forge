@@ -70757,8 +70757,6 @@
 	            transition = _state.transition,
 	            opacity = _state.opacity;
 	
-	        var computedStyle = _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, _underscore2.default.omit(style, 'opacity'));
-	        computedStyle.opacity = opacity === 1 ? style.opacity : opacity;
 	        var link = _react2.default.createElement(
 	            'sub',
 	            { style: { width: '100%', position: 'absolute', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' } },
@@ -70777,7 +70775,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: computedStyle },
+	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition, opacity: opacity }, _underscore2.default.omit(style, 'opacity')) },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
