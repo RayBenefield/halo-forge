@@ -70773,7 +70773,7 @@
 	        );
 	        return _react2.default.createElement(
 	            _reactSwipeable2.default,
-	            { style: { position: 'relative', display: 'inline-block' }, onSwipingRight: this.moveRight, onSwipingLeft: this.moveLeft, onSwipedRight: this.swipedRight, onSwipedLeft: this.swipedLeft, trackMouse: true },
+	            { style: { position: 'relative', display: 'inline-block' }, onSwipingRight: this.moveRight, onSwipingLeft: this.moveLeft, onSwipedRight: this.swipedRight, onSwipedLeft: this.swipedLeft },
 	            _react2.default.createElement(
 	                _Card.Card,
 	                { style: _underscore2.default.extend({ marginLeft: left + 'px' }, style) },
