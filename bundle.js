@@ -70742,7 +70742,7 @@
 	        this.setState({ left: delta, opacity: 1 - delta / 400 });
 	    },
 	    swiped: function swiped() {
-	        this.setState({ left: 0, start: 0, transition: smooth });
+	        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
 	    },
 	    start: function start(e) {
 	        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast });
@@ -70754,7 +70754,8 @@
 	            muiTheme = _props.muiTheme;
 	        var _state = this.state,
 	            left = _state.left,
-	            transition = _state.transition;
+	            transition = _state.transition,
+	            opacity = _state.opacity;
 	
 	        var link = _react2.default.createElement(
 	            'sub',
@@ -70774,7 +70775,7 @@
 	            { style: { position: 'relative', display: 'inline-block' }, onTouchMove: this.move, onTouchEnd: this.swiped, onTouchStart: this.start },
 	            _react2.default.createElement(
 	                _Card.Card,
-	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition }, _underscore2.default.omit(style, 'opacity')) },
+	                { style: _underscore2.default.extend({ marginLeft: left + 'px', transition: transition, opacity: opacity }, _underscore2.default.omit(style, 'opacity')) },
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: post.url },
