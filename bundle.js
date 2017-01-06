@@ -70748,10 +70748,22 @@
 	        this.setState({ right: delta, opacity: 1 - Math.abs(delta) / 400 - 0.2 });
 	    },
 	    swiped: function swiped() {
+	        var _this = this;
+	
 	        if (this.state.right > 30) {
-	            this.add();
+	            setTimeout(function () {
+	                _this.add();
+	                _this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
+	            }, 1000);
+	            this.setState({ right: 400, start: 0, transition: smooth, opacity: 0 });
+	            return;
 	        } else if (this.state.right < -30) {
-	            this.drop();
+	            setTimeout(function () {
+	                _this.drop();
+	                _this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
+	            }, 1000);
+	            this.setState({ right: -400, start: 0, transition: smooth, opacity: 0 });
+	            return;
 	        }
 	        this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
 	    },
