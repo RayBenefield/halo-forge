@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
+import webpack from 'webpack';
 
 const BUILD_DIR = path.resolve(__dirname, 'build/');
 const APP_DIR = path.resolve(__dirname, 'src/');
@@ -9,6 +11,13 @@ const config = {
         path: BUILD_DIR,
         filename: 'bundle.js',
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production'),
+            },
+        }),
+    ],
     module: {
         loaders: [
             {

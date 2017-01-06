@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import React from 'react';
 import { Card, CardHeader } from 'material-ui/Card';
 import muiThemeable from 'material-ui/styles/muiThemeable';
@@ -5,27 +6,47 @@ import equip from './equip';
 
 const time = require('time-ago')();
 
-const Post = ({ post, style, muiTheme }) => {
-    const link = (
-        <sub style={{ width: '100%', position: 'absolute', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
-            <a href={post.sourceUrl}>{time.ago(post.added)} • {post.source} <img src={post.sourceImage} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} /></a>
-        </sub>
-    );
-    return (
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-            <Card style={style}>
-                <a href={post.url}>
-                    <img src={post.image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
-                    <CardHeader
-                        title={post.title}
-                        titleStyle={{ padding: '16px', paddingTop: '8px' }}
-                        actAsExpander
-                    />
-                    {link}
-                </a>
-            </Card>
-        </div>
-    );
-};
+const smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
+const fast = '';
 
-export default equip(muiThemeable()(Post));
+const Post = React.createClass({
+    getInitialState() {
+        return { left: 0, transition: smooth, opacity: 1 };
+    },
+    move(e) {
+        const delta = e.nativeEvent.touches[0].clientX - this.state.start;
+        this.setState({ left: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
+    },
+    swiped() {
+        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
+    },
+    start(e) {
+        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
+    },
+    render() {
+        const { post, style, muiTheme } = this.props;
+        const { left, transition, opacity } = this.state;
+        const link = (
+            <sub style={{ width: '100%', position: 'absolute', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
+                <a href={post.sourceUrl}>{time.ago(post.added)} • {post.source} <img src={post.sourceImage} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} /></a>
+            </sub>
+        );
+        return (
+            <div style={{ position: 'relative', display: 'inline-block' }} onTouchMove={this.move} onTouchEnd={this.swiped} onTouchStart={this.start}>
+                <Card style={_.extend({ marginLeft: `${left}px`, transition, opacity }, _.omit(style, 'opacity'))}>
+                    <a href={post.url}>
+                        <img src={post.image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
+                        <CardHeader
+                            title={post.title}
+                            titleStyle={{ padding: '16px', paddingTop: '8px' }}
+                            actAsExpander
+                        />
+                        {link}
+                    </a>
+                </Card>
+            </div>
+        );
+    },
+});
+
+export default muiThemeable()(equip(Post));
