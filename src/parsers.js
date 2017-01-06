@@ -1,5 +1,4 @@
-import _ from 'underscore';
-import { NEW, ADDED, DROPPED } from './actions';
+import { NEW } from './actions';
 import rHaloImage from './r-halo-image.png';
 import rHaloSource from './r-halo.png';
 
@@ -14,7 +13,7 @@ export default {
             )
             : rHaloImage;
         return {
-            status: [NEW, ADDED, DROPPED][_.random(0, 2)],
+            status: NEW,
             url: post.url,
             title: post.title,
             image,

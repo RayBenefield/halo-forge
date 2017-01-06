@@ -11,21 +11,29 @@ const fast = '';
 
 const Post = React.createClass({
     getInitialState() {
-        return { left: 0, transition: smooth, opacity: 1 };
+        return { right: 0, transition: smooth, opacity: 1 };
     },
     move(e) {
         const delta = e.nativeEvent.touches[0].clientX - this.state.start;
-        this.setState({ left: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
+        this.setState({ right: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
     },
     swiped() {
-        this.setState({ left: 0, start: 0, transition: smooth, opacity: 1 });
+        if (this.state.right > 30) {
+            this.add();
+        } else if (this.state.right < -30) {
+            this.drop();
+        }
+        this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
     },
     start(e) {
         this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
     },
     render() {
-        const { post, style, muiTheme } = this.props;
-        const { left, transition, opacity } = this.state;
+        const { post, style, muiTheme, add, drop } = this.props;
+        this.add = add;
+        this.drop = drop;
+
+        const { right, transition, opacity } = this.state;
         const link = (
             <sub style={{ width: '100%', position: 'absolute', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
                 <a href={post.sourceUrl}>{time.ago(post.added)} • {post.source} <img src={post.sourceImage} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} /></a>
@@ -33,7 +41,7 @@ const Post = React.createClass({
         );
         return (
             <div style={{ position: 'relative', display: 'inline-block' }} onTouchMove={this.move} onTouchEnd={this.swiped} onTouchStart={this.start}>
-                <Card style={_.extend({ marginLeft: `${left}px`, transition, opacity }, _.omit(style, 'opacity'))}>
+                <Card style={_.extend({ marginLeft: `${right}px`, transition, opacity }, _.omit(style, 'opacity'))}>
                     <a href={post.url}>
                         <img src={post.image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
                         <CardHeader

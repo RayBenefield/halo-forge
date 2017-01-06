@@ -21,6 +21,11 @@ export default (state = { }, action) => {
                 }))
             );
         }
+        case 'CHANGE_STATUS': {
+            const newState = _.clone(state);
+            newState[action.id].status = action.status;
+            return newState;
+        }
         default:
             return state;
     }

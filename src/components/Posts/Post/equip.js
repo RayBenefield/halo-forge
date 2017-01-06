@@ -9,5 +9,7 @@ export default connect(
     dispatch => ({ dispatch }),
     ({ id, style }, { dispatch }, ownProps) => _.extend({
         style,
+        add: () => dispatch({ type: 'CHANGE_STATUS', id, status: 'ADDED' }),
+        drop: () => dispatch({ type: 'CHANGE_STATUS', id, status: 'DROPPED' }),
     }, ownProps),
 );
