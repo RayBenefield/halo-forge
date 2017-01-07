@@ -61377,11 +61377,6 @@
 	                            },
 	                            post.title
 	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { style: { position: 'relative', height: '24px', width: '100%' } },
-	                        link
 	                    )
 	                )
 	            )
