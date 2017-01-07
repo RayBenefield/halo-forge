@@ -1,6 +1,5 @@
 import _ from 'underscore';
 import React from 'react';
-import { Card, CardHeader } from 'material-ui/Card';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import * as styles from '../index.css';
@@ -49,7 +48,7 @@ const Post = React.createClass({
 
         const { right, transition, opacity, className } = this.state;
         const link = (
-            <sub style={{ width: '100%', position: 'absolute', bottom: '0px', right: '0px', color: muiTheme.card.subtitleColor, textAlign: 'right', padding: '16px' }}>
+            <sub style={{ position: 'absolute', bottom: '16px', right: '16px', color: muiTheme.card.subtitleColor, textAlign: 'right' }}>
                 <a href={post.sourceUrl}>{time.ago(post.added)} • {post.source} <img src={post.sourceImage} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} /></a>
             </sub>
         );
@@ -65,18 +64,58 @@ const Post = React.createClass({
                     margin: 'auto',
                 }}
             >
-                <div style={{ position: 'relative', display: 'inline-block' }} onTouchMove={this.move} onTouchEnd={this.swiped} onTouchStart={this.start}>
-                    <Card style={_.extend({ marginLeft: `${right}px`, transition, opacity }, _.omit(style, 'opacity'))}>
-                        <a href={post.url}>
-                            <img src={post.image} alt={post.title} height={81} width={101} style={{ padding: '16px', paddingRight: '0px', float: 'left' }} />
-                            <CardHeader
-                                title={post.title}
-                                titleStyle={{ padding: '16px', paddingTop: '8px' }}
-                                actAsExpander
+                <div
+                    onTouchMove={this.move}
+                    onTouchEnd={this.swiped}
+                    onTouchStart={this.start}
+                    style={_.extend({
+                        marginLeft: `${right}px`,
+                        transition,
+                        opacity,
+                        boxShadow: 'rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px',
+                        boxBorder: 'border-box',
+                        fontFamily: 'Roboto, sans-serif',
+                        color: 'rgb(255, 255, 255)',
+                        backgroundColor: 'rgb(66, 66, 66)',
+                        borderRadius: '2px',
+                        zIndex: 1,
+                        position: 'relative',
+                    }, _.omit(style, 'opacity', 'height'))}
+                >
+                    <a
+                        href={post.url}
+                        style={{
+                            fontFamily: 'Roboto, sans-serif',
+                            fontWeight: 500,
+                            fontSize: '15px',
+                            verticalAlign: 'top',
+                            color: muiTheme.card.title,
+                        }}
+                    >
+                        <div style={{ overflow: 'auto' }}>
+                            <img
+                                src={post.image}
+                                alt={post.title}
+                                height={81}
+                                width={101}
+                                style={{
+                                    padding: '16px',
+                                    float: 'left',
+                                    width: '25%',
+                                }}
                             />
+                            <div
+                                style={{
+                                    verticalAlign: 'top',
+                                    padding: '16px',
+                                    paddingTop: '24px',
+                                }}
+                            >{post.title}</div>
+                        </div>
+                        <div style={{ position: 'relative', height: '24px', width: '100%' }}>
                             {link}
-                        </a>
-                    </Card>
+                        </div>
+                    </a>
                 </div>
             </div>
         );
