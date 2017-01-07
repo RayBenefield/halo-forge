@@ -1,32 +1,38 @@
 import _ from 'underscore';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import equip from './equip';
-import PostsGrid from '../StaticResponsiveGrid';
 import Post from './Post';
 
 const Posts = ({ style, posts, added }) => {
-    let i = -1;
+    const removeChild = (child) => {
+        // eslint-disable-next-line react/no-find-dom-node
+        ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(child));
+    };
     const postCards = _.mapObject(posts, (post) => {
         const props = {
             post,
             style,
             added,
         };
-        i++;
         return (
-            <div key={i}>
-                <Post {...props} />
-            </div>
+            <Post key={post.id} remove={removeChild} {...props} />
         );
     });
 
     return (
-        <PostsGrid
-            itemWidth={style.width}
-            itemHeight={style.height}
-            maxWidth={1600}
-            items={_.values(postCards)}
-        />
+        <div
+            style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                flex: 1,
+                overflowY: 'scroll',
+                margin: '8px',
+            }}
+        >
+            {_.values(postCards)}
+        </div>
     );
 };
 
