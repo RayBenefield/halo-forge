@@ -2,6 +2,7 @@
     /* 0 does not work so we have to use a small number */
     /* Start our small */
     flex: .00001;
+    max-height: 0px;
 
     -webkit-animation: flexGrow 500ms ease forwards;
     -o-animation: flexGrow 500ms ease forwards;

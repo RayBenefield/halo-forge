@@ -1,14 +1,10 @@
 import _ from 'underscore';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactTransitionGroup from 'react-addons-transition-group';
 import equip from './equip';
 import Post from './Post';
 
 const Posts = ({ style, posts, added }) => {
-    const removeChild = (child) => {
-        // eslint-disable-next-line react/no-find-dom-node
-        ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(child));
-    };
     const postCards = _.map(posts, (post) => {
         const props = {
             post,
@@ -16,12 +12,12 @@ const Posts = ({ style, posts, added }) => {
             added,
         };
         return (
-            <Post key={post.id} remove={removeChild} {...props} />
+            <Post key={post.id} {...props} />
         );
     });
 
     return (
-        <div
+        <ReactTransitionGroup
             style={{
                 width: '100%',
                 display: 'flex',
@@ -32,7 +28,7 @@ const Posts = ({ style, posts, added }) => {
             }}
         >
             {_.values(postCards)}
-        </div>
+        </ReactTransitionGroup>
     );
 };
 

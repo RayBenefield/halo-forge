@@ -2,7 +2,8 @@ import _ from 'underscore';
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
-import * as styles from '../index.css';
+import animate from './animate';
+import * as styles from './styles.css';
 
 const time = require('time-ago')();
 
@@ -19,20 +20,12 @@ const Post = React.createClass({
     },
     swiped() {
         if (this.state.right > 30) {
-            setTimeout(() => {
-                this.remove(this);
-                this.add();
-                this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
-            }, 1000);
-            this.setState({ right: 400, start: 0, transition: smooth, opacity: 0, className: styles['remove-item'] });
+            this.add();
+            this.setState({ right: 400, start: 0, transition: smooth, opacity: 0 });
             return;
         } else if (this.state.right < -30) {
-            setTimeout(() => {
-                this.remove(this);
-                this.drop();
-                this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
-            }, 1000);
-            this.setState({ right: -400, start: 0, transition: smooth, opacity: 0, className: styles['remove-item'] });
+            this.drop();
+            this.setState({ right: -400, start: 0, transition: smooth, opacity: 0 });
             return;
         }
         this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
@@ -41,10 +34,9 @@ const Post = React.createClass({
         this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
     },
     render() {
-        const { post, style, muiTheme, add, drop, remove } = this.props;
+        const { post, style, muiTheme, add, drop } = this.props;
         this.add = add;
         this.drop = drop;
-        this.remove = remove;
 
         const { right, transition, opacity, className } = this.state;
         const link = (
@@ -119,4 +111,4 @@ const Post = React.createClass({
     },
 });
 
-export default muiThemeable()(equip(Post));
+export default animate(muiThemeable()(equip(Post)));

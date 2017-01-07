@@ -42,6 +42,7 @@
         "material-ui": "^0.16.6",
         "node-uuid": "^1.4.7",
         "react": "^15.4.1",
+        "react-addons-transition-group": "^15.4.2",
         "react-dom": "^15.4.1",
         "react-redux": "^5.0.1",
         "react-tap-event-plugin": "^2.0.1",
