@@ -4,7 +4,7 @@ import { getVisibleItems } from '../../selectors';
 
 export default connect(
     (state, ownProps) => ({
-        posts: getVisibleItems(state),
+        posts: _.sortBy(_.values(getVisibleItems(state)), 'added').reverse(),
         style: _.extend(ownProps.style, state.layout.item),
     }),
 );

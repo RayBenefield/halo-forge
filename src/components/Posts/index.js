@@ -9,7 +9,7 @@ const Posts = ({ style, posts, added }) => {
         // eslint-disable-next-line react/no-find-dom-node
         ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(child));
     };
-    const postCards = _.mapObject(posts, (post) => {
+    const postCards = _.map(posts, (post) => {
         const props = {
             post,
             style,
