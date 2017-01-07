@@ -112,9 +112,6 @@ const Post = React.createClass({
                                 }}
                             >{post.title}</div>
                         </div>
-                        <div style={{ position: 'relative', height: '24px', width: '100%' }}>
-                            {link}
-                        </div>
                     </a>
                 </div>
             </div>

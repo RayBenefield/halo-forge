@@ -28,7 +28,7 @@ const Posts = ({ style, posts, added }) => {
                 flexDirection: 'column',
                 flex: 1,
                 overflowY: 'scroll',
-                margin: '8px',
+                paddingTop: '8px',
             }}
         >
             {_.values(postCards)}
