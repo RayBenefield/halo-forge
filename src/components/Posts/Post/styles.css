@@ -1,40 +1,15 @@
-.start {
-    flex: .00001;
-}
-
 .new-item {
-    /* 0 does not work so we have to use a small number */
-    /* Start our small */
     flex: .00001;
     min-height: 0px;
-
-    -webkit-animation: flexGrow 500ms ease forwards;
-    -o-animation: flexGrow 500ms ease forwards;
     animation: flexGrow 500ms ease forwards;
 }
 
 .remove-item {
     flex: 1;
     min-height: 128px;
-
-
-    -webkit-animation: flexShrink 500ms ease forwards;
-    -o-animation: flexShrink 500ms ease forwards;
     animation: flexShrink 500ms ease forwards;
 }
 
-@-webkit-keyframes flexGrow {
-    to {
-        flex: 1;
-        min-height: 128px;
-    }
-}
-@-o-keyframes flexGrow {
-    to {
-        flex: 1;
-        min-height: 128px;
-    }
-}
 @keyframes flexGrow {
     to {
         flex: 1;
@@ -42,20 +17,6 @@
     }
 }
 
-@-webkit-keyframes flexShrink {
-    to {
-        flex: .01;
-        flex: .00001;
-        min-height: 0px;
-    }
-}
-@-o-keyframes flexShrink {
-    to {
-        flex: .01;
-        flex: .00001;
-        min-height: 0px;
-    }
-}
 @keyframes flexShrink {
     to {
         flex: .01;

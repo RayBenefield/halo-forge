@@ -3,7 +3,6 @@ import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import animate from './animate';
-import * as styles from './styles.css';
 
 const smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
 const fast = '';
@@ -39,7 +38,6 @@ const Post = React.createClass({
 
         return (
             <div
-                className={styles.start}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -53,7 +51,7 @@ const Post = React.createClass({
                     onTouchEnd={this.swiped}
                     onTouchStart={this.start}
                     style={_.extend({
-                        marginLeft: show ? `${right}px` : -600,
+                        marginLeft: show ? `${right}px` : -400,
                         transition,
                         opacity: show ? opacity : 0,
                         boxShadow: 'rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px',
