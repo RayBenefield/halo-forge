@@ -1,4 +1,4 @@
-/* eslint-disable react/no-find-dom-node,no-console */
+/* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import * as styles from './styles.css';

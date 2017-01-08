@@ -12,23 +12,27 @@ const Post = React.createClass({
         return { right: 0, transition: smooth, opacity: 1 };
     },
     move(e) {
-        const delta = e.nativeEvent.touches[0].clientX - this.state.start;
+        const delta = e.nativeEvent.touches[0].clientX - this.origin;
         this.setState({ right: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
     },
     swiped() {
-        if (this.state.right > 30) {
+        if (this.state.right > 50) {
             this.add();
-            this.setState({ right: 400, start: 0, transition: smooth, opacity: 0 });
+            this.origin = 0;
+            this.setState({ right: 400, transition: smooth, opacity: 0 });
             return;
-        } else if (this.state.right < -30) {
+        } else if (this.state.right < -50) {
             this.drop();
-            this.setState({ right: -400, start: 0, transition: smooth, opacity: 0 });
+            this.origin = 0;
+            this.setState({ right: -400, transition: smooth, opacity: 0 });
             return;
         }
-        this.setState({ right: 0, start: 0, transition: smooth, opacity: 1 });
+        this.origin = 0;
+        this.setState({ right: 0, transition: smooth, opacity: 1 });
     },
     start(e) {
-        this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
+        this.origin = e.nativeEvent.touches[0].clientX;
+        this.setState({ transition: fast, opacity: 0.8 });
     },
     render() {
         const { post, style, muiTheme, add, drop, show = false } = this.props;
