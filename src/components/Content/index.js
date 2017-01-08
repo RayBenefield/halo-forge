@@ -1,6 +1,6 @@
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import Posts from '../Posts';
+import Feed from '../Feed';
 import equip from './equip';
 
 const Content = ({ isFetching, posts, postCount, lastUpdated, muiTheme }) => (
@@ -18,7 +18,7 @@ const Content = ({ isFetching, posts, postCount, lastUpdated, muiTheme }) => (
                         Last updated at {new Date(lastUpdated).toLocaleTimeString()}
                     </sub>
                 }
-                <Posts style={{ opacity: isFetching ? 0.5 : 1 }} />
+                <Feed style={{ opacity: isFetching ? 0.5 : 1 }} />
             </div>
         }
     </div>

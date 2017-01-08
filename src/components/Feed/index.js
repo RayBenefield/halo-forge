@@ -2,9 +2,9 @@ import _ from 'underscore';
 import React from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import equip from './equip';
-import Post from './Post';
+import Post from '../Post';
 
-const Posts = ({ style, posts, added }) => {
+const Feed = ({ style, posts, added }) => {
     const postCards = _.map(posts, (post) => {
         const props = {
             post,
@@ -32,4 +32,4 @@ const Posts = ({ style, posts, added }) => {
     );
 };
 
-export default equip(Posts);
+export default equip(Feed);
