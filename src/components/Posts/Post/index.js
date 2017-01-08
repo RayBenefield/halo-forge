@@ -5,14 +5,12 @@ import equip from './equip';
 import animate from './animate';
 import * as styles from './styles.css';
 
-const time = require('time-ago')();
-
 const smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
 const fast = '';
 
 const Post = React.createClass({
     getInitialState() {
-        return { right: 0, transition: smooth, opacity: 1, className: styles['new-item'] };
+        return { right: 0, transition: smooth, opacity: 1 };
     },
     move(e) {
         const delta = e.nativeEvent.touches[0].clientX - this.state.start;
@@ -34,22 +32,16 @@ const Post = React.createClass({
         this.setState({ start: e.nativeEvent.touches[0].clientX, transition: fast, opacity: 0.8 });
     },
     render() {
-        const { post, style, muiTheme, add, drop } = this.props;
+        const { post, style, muiTheme, add, drop, show = false } = this.props;
         this.add = add;
         this.drop = drop;
+        const { right, transition, opacity } = this.state;
 
-        const { right, transition, opacity, className } = this.state;
-        const link = (
-            <sub style={{ position: 'absolute', bottom: '16px', right: '16px', color: muiTheme.card.subtitleColor, textAlign: 'right' }}>
-                <a href={post.sourceUrl}>{time.ago(post.added)} • {post.source} <img src={post.sourceImage} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} /></a>
-            </sub>
-        );
         return (
             <div
-                className={className}
+                className={styles.start}
                 style={{
                     display: 'flex',
-                    flex: 1,
                     flexDirection: 'column',
                     transition: 'flex-grow 500ms linear',
                     maxHeight: '128px',
@@ -61,9 +53,9 @@ const Post = React.createClass({
                     onTouchEnd={this.swiped}
                     onTouchStart={this.start}
                     style={_.extend({
-                        marginLeft: `${right}px`,
+                        marginLeft: show ? `${right}px` : -600,
                         transition,
-                        opacity,
+                        opacity: show ? opacity : 0,
                         boxShadow: 'rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px',
                         boxBorder: 'border-box',
                         fontFamily: 'Roboto, sans-serif',
