@@ -1,26 +1,21 @@
 .new-item {
-    flex: .00001;
-    min-height: 0px;
-    animation: flexGrow 500ms ease forwards;
+    max-height: 0px;
+    animation: grow 500ms ease forwards;
 }
 
 .remove-item {
-    flex: 1;
-    min-height: 128px;
-    animation: flexShrink 500ms ease forwards;
+    max-height: 500px;
+    animation: shrink 500ms ease forwards;
 }
 
-@keyframes flexGrow {
+@keyframes grow {
     to {
-        flex: 1;
-        min-height: 128px;
+        max-height: 500px;
     }
 }
 
-@keyframes flexShrink {
+@keyframes shrink {
     to {
-        flex: .01;
-        flex: .00001;
-        min-height: 0px;
+        max-height: 0px;
     }
 }

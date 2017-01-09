@@ -46,7 +46,6 @@ const Post = React.createClass({
                     display: 'flex',
                     flexDirection: 'column',
                     transition: 'flex-grow 500ms linear',
-                    maxHeight: '128px',
                     margin: 'auto',
                 }}
             >
@@ -55,6 +54,7 @@ const Post = React.createClass({
                     onTouchEnd={this.swiped}
                     onTouchStart={this.start}
                     style={_.extend({
+                        marginTop: '8px',
                         marginLeft: show ? `${right}px` : -400,
                         transition,
                         opacity: show ? opacity : 0,
