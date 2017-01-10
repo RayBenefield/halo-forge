@@ -39,6 +39,18 @@ const config = {
                     'style?sourceMap',
                     'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
                 ],
+                exclude: [
+                    path.resolve(`${APP_DIR}/index.css`),
+                    path.resolve('node_modules'),
+                ],
+            },
+            {
+                test: /\.css$/,
+                loader: 'file?name=[name].[ext]',
+                include: [
+                    path.resolve(`${APP_DIR}/index.css`),
+                    path.resolve('node_modules'),
+                ],
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
