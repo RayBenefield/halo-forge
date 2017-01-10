@@ -9,14 +9,14 @@ import Content from '../components/Content';
 const Layout = ({ dispatch, selectedSource }) => {
     dispatch(fetchPosts(selectedSource));
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <div style={{ height: '100px', flex: 0, paddingBottom: '12px' }}>
+        <div className="flex flex-column h-100">
+            <div style={{ height: '7rem' }}>
                 <Header />
-                <Paper zDepth={4} style={{ zIndex: 5, position: 'relative' }}>
+                <Paper className="relative z-5" zDepth={4}>
                     <Picker />
                 </Paper>
             </div>
-            <div style={{ position: 'relative', flex: 1, height: '100%', overflowX: 'hidden', overflowY: 'scroll' }}>
+            <div className="relative h-100 overflow-x-hidden overflow-y-scroll flex-auto">
                 <Content />
             </div>
         </div>
