@@ -1,9 +1,8 @@
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 import Feed from '../Feed';
 import equip from './equip';
 
-const Content = ({ isFetching, posts, postCount, lastUpdated, muiTheme }) => (
+const Content = ({ isFetching, posts, postCount, lastUpdated }) => (
     <div>
         {isFetching && posts.length === 0 &&
             <h2>Loading...</h2>
@@ -14,7 +13,7 @@ const Content = ({ isFetching, posts, postCount, lastUpdated, muiTheme }) => (
         {postCount > 0 &&
             <div>
                 {lastUpdated &&
-                    <sub style={{ padding: '16px', color: muiTheme.card.subtitleColor }}>
+                    <sub className="pa3 top-075 grey-text">
                         Last updated at {new Date(lastUpdated).toLocaleTimeString()}
                     </sub>
                 }
@@ -24,4 +23,4 @@ const Content = ({ isFetching, posts, postCount, lastUpdated, muiTheme }) => (
     </div>
 );
 
-export default muiThemeable()(equip(Content));
+export default equip(Content);

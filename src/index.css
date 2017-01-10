@@ -9,6 +9,8 @@ a {
     text-decoration: inherit; /* no underline */
 }
 
+.grey-text { color: rgba(255, 255, 255, 0.541176); }
+
 .flex { display: flex; }
 .flex-column  { flex-direction: column; }
 .flex-auto {
@@ -23,5 +25,9 @@ a {
 .relative  { position: relative; }
 
 .h-100 { height: 100%; }
+
+.top-075 { top: 0.75rem; }
+
+.pa3 { padding: 1rem; }
 
 .z-5 { z-index: 5; }
