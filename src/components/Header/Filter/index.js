@@ -7,7 +7,7 @@ import equip from './equip';
 
 const Filter = ({ status, filter }) => (
     <div style={{ display: 'inline' }}>
-        <sub style={{ opacity: 0.54, verticalAlign: 'middle' }}>{status}</sub>
+        <sub className="grey-text">{status}</sub>
         <IconMenu
             iconButtonElement={<IconButton><FilterIcon /></IconButton>}
             onChange={filter}
