@@ -3,8 +3,7 @@ import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import animate from './animate';
-
-const time = require('time-ago')();
+import SiteAttribution from './site-attribution';
 
 const smooth = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
 const fast = '';
@@ -41,21 +40,9 @@ const Post = React.createClass({
         this.add = add;
         this.drop = drop;
         const { right, transition, opacity } = this.state;
-        const link = (
-            <sub style={{ position: 'absolute', bottom: '8px', right: '16px', color: muiTheme.card.subtitleColor, textAlign: 'right' }}>
-                <a href={post.sourceUrl}>{time.ago(post.added)} • {post.source} <img src={post.sourceImage} alt={post.title} style={{ paddingLeft: '8px', verticalAlign: 'middle' }} /></a>
-            </sub>
-        );
 
         return (
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    transition: 'flex-grow 500ms linear',
-                    margin: 'auto',
-                }}
-            >
+            <div className="m-auto">
                 <div
                     onTouchMove={this.move}
                     onTouchEnd={this.swiped}
@@ -105,13 +92,15 @@ const Post = React.createClass({
                                 }}
                             >
                                 {post.title}
-                                <div
-                                    style={{
-                                        height: '24px',
-                                    }}
-                                >
-                                    {link}
-                                </div>
+                                <SiteAttribution
+                                    {..._.pick(post,
+                                        'title',
+                                        'sourceImage',
+                                        'sourceUrl',
+                                        'added',
+                                        'source'
+                                    )}
+                                />
                             </div>
                         </div>
                     </a>

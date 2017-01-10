@@ -23,12 +23,21 @@ a {
 .overflow-x-hidden { overflow-x: hidden; }
 
 .relative { position: relative; }
+.absolute { position: absolute; }
 
 .h-100 { height: 100%; }
+.h-1-5 { height: 1.5rem; }
 
 .top-075 { top: 0.75rem; }
+.bottom-05 { bottom: 0.5rem; }
+.right-1 { right: 1rem; }
 
 .pa3 { padding: 1rem; }
-.pt2 { padding: 0.5rem; }
+.pt2 { padding-top: 0.5rem; }
+.pl2 { padding-left: 0.5rem; }
+
+.m-auto { margin: auto; }
+
+.v-mid { vertical-align: middle; }
 
 .z-5 { z-index: 5; }
