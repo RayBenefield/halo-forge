@@ -1,6 +1,5 @@
 import _ from 'underscore';
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 import equip from './equip';
 import animate from './animate';
 import SiteAttribution from './site-attribution';
@@ -36,10 +35,11 @@ const Post = React.createClass({
         this.setState({ transition: fast, opacity: 0.8 });
     },
     render() {
-        const { post, style, muiTheme, add, drop, show = false } = this.props;
+        const { post, style, add, drop, show = false } = this.props;
         this.add = add;
         this.drop = drop;
         const { right, transition, opacity } = this.state;
+        const sourceProps = _.pick(post, 'source', 'sourceImage', 'sourceUrl', 'title', 'added');
 
         return (
             <div className="m-auto">
@@ -47,60 +47,19 @@ const Post = React.createClass({
                     onTouchMove={this.move}
                     onTouchEnd={this.swiped}
                     onTouchStart={this.start}
+                    className="relative mt2 z-depth-2 roboto white bg-grey-800 br1"
                     style={_.extend({
-                        marginTop: '8px',
                         marginLeft: show ? `${right}px` : -400,
                         transition,
                         opacity: show ? opacity : 0,
-                        boxShadow: 'rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px',
-                        boxBorder: 'border-box',
-                        fontFamily: 'Roboto, sans-serif',
-                        color: 'rgb(255, 255, 255)',
-                        backgroundColor: 'rgb(66, 66, 66)',
-                        borderRadius: '2px',
-                        zIndex: 1,
-                        position: 'relative',
                     }, _.omit(style, 'opacity', 'height'))}
                 >
-                    <a
-                        href={post.url}
-                        style={{
-                            fontFamily: 'Roboto, sans-serif',
-                            fontWeight: 500,
-                            fontSize: '15px',
-                            verticalAlign: 'top',
-                            color: muiTheme.card.title,
-                        }}
-                    >
-                        <div style={{ overflow: 'auto' }}>
-                            <img
-                                src={post.image}
-                                alt={post.title}
-                                height={81}
-                                width={101}
-                                style={{
-                                    padding: '16px',
-                                    float: 'left',
-                                    width: '25%',
-                                }}
-                            />
-                            <div
-                                style={{
-                                    verticalAlign: 'top',
-                                    padding: '16px',
-                                    paddingTop: '24px',
-                                }}
-                            >
+                    <a href={post.url} className="roboto fw5">
+                        <div className="overflow-auto">
+                            <img src={post.image} alt={post.title} className="pa3 fl w-25" />
+                            <div className="v-top pa3 pt4">
                                 {post.title}
-                                <SiteAttribution
-                                    {..._.pick(post,
-                                        'title',
-                                        'sourceImage',
-                                        'sourceUrl',
-                                        'added',
-                                        'source'
-                                    )}
-                                />
+                                <SiteAttribution {...sourceProps} />
                             </div>
                         </div>
                     </a>
@@ -110,4 +69,4 @@ const Post = React.createClass({
     },
 });
 
-export default animate(muiThemeable()(equip(Post)));
+export default animate(equip(Post));
