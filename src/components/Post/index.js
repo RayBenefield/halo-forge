@@ -11,8 +11,15 @@ const Post = React.createClass({
     getInitialState() {
         return { right: 0, transition: smooth, opacity: 1 };
     },
+    start(e) {
+        this.origin = { x: e.nativeEvent.touches[0].clientX, y: e.nativeEvent.touches[0].clientY };
+        this.setState({ transition: fast, opacity: 0.8 });
+    },
     move(e) {
-        const delta = e.nativeEvent.touches[0].clientX - this.origin;
+        const touch = { x: e.nativeEvent.touches[0].clientX, y: e.nativeEvent.touches[0].clientY };
+        const xDistance = Math.abs(touch.x - this.origin.x) - Math.abs(touch.y - this.origin.y);
+        const isHorizontal = xDistance > 25;
+        const delta = isHorizontal ? touch.x - this.origin.x : 0;
         this.setState({ right: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
     },
     swiped() {
@@ -29,10 +36,6 @@ const Post = React.createClass({
         }
         this.origin = 0;
         this.setState({ right: 0, transition: smooth, opacity: 1 });
-    },
-    start(e) {
-        this.origin = e.nativeEvent.touches[0].clientX;
-        this.setState({ transition: fast, opacity: 0.8 });
     },
     render() {
         const { post, style, add, drop, show = false } = this.props;
