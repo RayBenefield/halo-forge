@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { RESIZE_LAYOUT } from '../../actions';
+import { RESIZE_LAYOUT } from 'src/actions';
 
 export default (state = { height: 0, width: 0 }, action) => {
     switch (action.type) {

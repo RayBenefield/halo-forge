@@ -3,9 +3,9 @@ import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import { resizeLayout } from '../actions';
-import configureStore from '../configureStore';
-import Layout from './Layout';
+import { resizeLayout } from 'src/actions';
+import configureStore from 'src/configureStore';
+import Layout from 'src/containers/Layout';
 
 const store = configureStore();
 

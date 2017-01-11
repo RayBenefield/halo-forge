@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectSource } from '../../actions';
+import { selectSource } from 'src/actions';
 
 export default connect(
     state => ({

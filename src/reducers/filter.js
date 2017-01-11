@@ -1,4 +1,4 @@
-import { NEW, FILTER } from '../actions';
+import { NEW, FILTER } from 'src/actions';
 
 export default (state = NEW, action) => {
     switch (action.type) {

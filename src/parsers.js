@@ -1,6 +1,6 @@
-import { NEW } from './actions';
-import rHaloImage from './r-halo-image.png';
-import rHaloSource from './r-halo.png';
+import { NEW } from 'src/actions';
+import rHaloImage from 'src/r-halo-image.png';
+import rHaloSource from 'src/r-halo.png';
 
 export default {
     reddit: (subreddit, results) => results.data.children.map((child) => {

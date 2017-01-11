@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { filter } from '../../../actions';
+import { filter } from 'src/actions';
 
 export default connect(
     state => ({

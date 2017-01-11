@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../../actions';
+import { fetchPosts } from 'src/actions';
 
 export default connect(
     state => ({

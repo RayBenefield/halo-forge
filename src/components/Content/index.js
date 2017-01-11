@@ -1,5 +1,5 @@
 import React from 'react';
-import Feed from '../Feed';
+import Feed from 'src/components/Feed';
 import equip from './equip';
 
 const Content = ({ isFetching, posts, postCount, lastUpdated }) => (

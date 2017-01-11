@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
-import { fetchPosts } from '../actions';
-import Picker from '../components/Picker';
-import Header from '../components/Header';
-import Content from '../components/Content';
+import { fetchPosts } from 'src/actions';
+import Picker from 'src/components/Picker';
+import Header from 'src/components/Header';
+import Content from 'src/components/Content';
 
 const Layout = ({ dispatch, selectedSource }) => {
     dispatch(fetchPosts(selectedSource));

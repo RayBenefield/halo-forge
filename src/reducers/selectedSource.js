@@ -1,4 +1,4 @@
-import { SELECT_SOURCE } from '../actions';
+import { SELECT_SOURCE } from 'src/actions';
 
 export default (state = 'halo', action) => {
     switch (action.type) {

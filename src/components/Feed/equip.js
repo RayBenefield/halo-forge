@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { connect } from 'react-redux';
-import { getVisibleItems } from '../../selectors';
+import { getVisibleItems } from 'src/selectors';
 
 export default connect(
     (state, ownProps) => ({

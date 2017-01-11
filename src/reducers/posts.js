@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import uuid from 'node-uuid';
-import { RECEIVE_POSTS } from '../actions';
+import { RECEIVE_POSTS } from 'src/actions';
 
 const getSourceIds = (source, posts) =>
     posts.filter(post => post.source === source).map(post => post.sourceId);

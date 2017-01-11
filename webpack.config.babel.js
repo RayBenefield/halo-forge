@@ -7,6 +7,11 @@ const APP_DIR = path.resolve(__dirname, 'src/');
 
 const config = {
     entry: `${APP_DIR}/index.js`,
+    resolve: {
+        extensions: ['', '.jsx', '.js', '.json'],
+        root: path.resolve(__dirname),
+        modulesDirectories: ['node_modules'],
+    },
     output: {
         path: BUILD_DIR,
         filename: 'bundle.js',

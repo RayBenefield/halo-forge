@@ -1,4 +1,4 @@
-import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions';
+import { REQUEST_POSTS, RECEIVE_POSTS } from 'src/actions';
 
 export default (state = false, action) => {
     switch (action.type) {

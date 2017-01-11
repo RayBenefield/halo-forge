@@ -1,10 +1,10 @@
 import fetch from 'rxjs-fetch';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mapTo';
-import { REQUEST_POSTS, RECEIVE_POSTS } from './actions';
-import parsers from './parsers';
-//import json1 from '../data/reddit-forge-1.json';
-//import json2 from '../data/reddit-forge-2.json';
+import { REQUEST_POSTS, RECEIVE_POSTS } from 'src/actions';
+import parsers from 'src/parsers';
+//import json1 from 'data/reddit-forge-1.json';
+//import json2 from 'data/reddit-forge-2.json';
 
 //let calledAlready = false;
 export default action$ =>
