@@ -10,7 +10,7 @@ const Layout = ({ dispatch, selectedSource }) => {
     dispatch(fetchPosts(selectedSource));
     return (
         <div className="flex flex-column h-100">
-            <div style={{ height: '7rem' }}>
+            <div className="h-7">
                 <Header />
                 <Paper className="relative z-5" zDepth={4}>
                     <Picker />

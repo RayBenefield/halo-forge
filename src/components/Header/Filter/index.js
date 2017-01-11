@@ -6,7 +6,7 @@ import FilterIcon from 'material-ui/svg-icons/content/filter-list';
 import equip from './equip';
 
 const Filter = ({ status, filter }) => (
-    <div style={{ display: 'inline' }}>
+    <div className="di">
         <sub className="grey-text">{status}</sub>
         <IconMenu
             iconButtonElement={<IconButton><FilterIcon /></IconButton>}

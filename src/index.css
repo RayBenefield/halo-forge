@@ -17,6 +17,8 @@ a {
 
 .fw5 { font-weight: 500; }
 
+.di { display: inline; }
+
 .flex { display: flex; }
 .flex-column { flex-direction: column; }
 .flex-auto {
@@ -38,6 +40,7 @@ a {
 
 .h-100 { height: 100%; }
 .h-1-5 { height: 1.5rem; }
+.h-7 { height: 7rem; }
 
 .top-075 { top: 0.75rem; }
 .bottom-05 { bottom: 0.5rem; }
