@@ -1,5 +1,11 @@
 {
 	"name": "Halo Forge App",
+	"short_name": "Halo Forge App",
+	"start_url": "https:\/\/raybenefield.github.io\/halo-forge\/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#303030",
+	"theme_color": "#303030",
 	"icons": [
 		{
 			"src": "\/android-chrome-36x36.png",
@@ -46,9 +52,5 @@
 			"sizes": "512x512",
 			"type": "image\/png"
 		}
-	],
-	"theme_color": "#303030",
-	"start_url": "https:\/\/raybenefield.github.io\/halo-forge\/",
-	"display": "standalone",
-	"orientation": "portrait"
+	]
 }
