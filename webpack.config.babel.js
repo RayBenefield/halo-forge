@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
 import webpack from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const BUILD_DIR = path.resolve(__dirname, 'build/');
 const APP_DIR = path.resolve(__dirname, 'src/');
@@ -22,6 +23,13 @@ const config = {
                 NODE_ENV: JSON.stringify('production'),
             },
         }),
+        new CopyWebpackPlugin([
+            { from: `${APP_DIR}/index.html` },
+            { from: `${APP_DIR}/index.css` },
+            { from: `${APP_DIR}/manifest.json` },
+            { from: `${APP_DIR}/browserconfig.xml` },
+            { from: `${APP_DIR}/icons`, to: `${BUILD_DIR}/icons` },
+        ]),
     ],
     module: {
         loaders: [
