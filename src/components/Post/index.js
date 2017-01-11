@@ -56,8 +56,8 @@ const Post = React.createClass({
                 >
                     <a href={post.url} className="roboto fw5">
                         <div className="overflow-auto">
-                            <img src={post.image} alt={post.title} className="pa3 fl w-25" />
-                            <div className="v-top pa3 pt4">
+                            <img src={post.image} alt={post.title} className="pa3 pr4 fl w-25" />
+                            <div className="v-top pa3">
                                 {post.title}
                                 <SiteAttribution {...sourceProps} />
                             </div>
