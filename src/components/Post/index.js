@@ -52,7 +52,7 @@ const Post = React.createClass({
                     onTouchStart={this.start}
                     className="relative mt2 z-depth-2 roboto white bg-grey-800 br1"
                     style={_.extend({
-                        marginLeft: show ? `${right}px` : -400,
+                        transform: show ? `translateX(${right}px)` : 'translate(-400px)',
                         transition,
                         opacity: show ? opacity : 0,
                     }, _.omit(style, 'opacity', 'height'))}
