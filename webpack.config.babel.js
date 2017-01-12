@@ -35,13 +35,12 @@ const config = {
         }),
         new CopyWebpackPlugin([
             { from: `${APP_DIR}/index.html` },
-            { from: `${APP_DIR}/index.css` },
             { from: `${APP_DIR}/manifest.json` },
             { from: `${APP_DIR}/browserconfig.xml` },
             { from: `${APP_DIR}/icons`, to: `${BUILD_DIR}/icons` },
         ]),
         new webpack.optimize.AggressiveMergingPlugin(),
-        //new BabiliPlugin(),
+        new BabiliPlugin(),
         new OfflinePlugin({
             ServiceWorker: {
                 entry: `${APP_DIR}/sw.js`,
@@ -75,7 +74,6 @@ const config = {
                     'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
                 ],
                 exclude: [
-                    path.resolve(`${APP_DIR}/index.css`),
                     path.resolve('node_modules'),
                 ],
             },
@@ -83,7 +81,6 @@ const config = {
                 test: /\.css$/,
                 loader: 'file-loader?name=[name].[ext]',
                 include: [
-                    path.resolve(`${APP_DIR}/index.css`),
                     path.resolve('node_modules'),
                 ],
             },
