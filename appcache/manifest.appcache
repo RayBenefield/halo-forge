@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:1/12/2017, 5:58:13 AM
+#ver:1/12/2017, 6:04:53 AM
 #plugin:4.5.4
 
 CACHE:
@@ -8,6 +8,7 @@ CACHE:
 ../1af720c32bff5cb61e65b75fc9763885.png
 ../bundle.js
 ../
+../index.css
 ../manifest.json
 ../browserconfig.xml
 ../icons/android-chrome-144x144.png
@@ -26,10 +27,10 @@ CACHE:
 ../icons/apple-touch-icon-144x144-precomposed.png
 ../icons/apple-touch-icon-144x144.png
 ../icons/apple-touch-icon-152x152-precomposed.png
-../icons/apple-touch-icon-152x152.png
 ../icons/apple-touch-icon-180x180-precomposed.png
-../icons/apple-touch-icon-57x57-precomposed.png
+../icons/apple-touch-icon-152x152.png
 ../icons/apple-touch-icon-180x180.png
+../icons/apple-touch-icon-57x57-precomposed.png
 ../icons/apple-touch-icon-57x57.png
 ../icons/apple-touch-icon-60x60-precomposed.png
 ../icons/apple-touch-icon-60x60.png
@@ -38,9 +39,9 @@ CACHE:
 ../icons/apple-touch-icon-76x76-precomposed.png
 ../icons/apple-touch-icon-76x76.png
 ../icons/apple-touch-icon-precomposed.png
-../icons/apple-touch-icon.png
 ../icons/favicon-16x16.png
 ../icons/favicon-194x194.png
+../icons/apple-touch-icon.png
 ../icons/favicon-32x32.png
 ../icons/favicon.ico
 ../icons/mstile-144x144.png
