@@ -9,17 +9,17 @@ export default Component => React.createClass({
     },
     componentWillLeave(cb) {
         const obj = findDOMNode(this);
-        obj.setAttribute('class', `${obj.className} ${styles['remove-item']}`);
+        obj.setAttribute('class', `m-auto ${styles['remove-item']}`);
         setTimeout(cb, 500);
     },
     componentDidAppear() {
         const obj = findDOMNode(this);
-        obj.setAttribute('class', `${obj.className} ${styles['new-item']}`);
+        obj.setAttribute('class', `m-auto ${styles['new-item']}`);
         setTimeout(() => this.setState({ show: true }), 500);
     },
     componentDidEnter() {
         const obj = findDOMNode(this);
-        obj.setAttribute('class', `${obj.className} ${styles['new-item']}`);
+        obj.setAttribute('class', `m-auto ${styles['new-item']}`);
         setTimeout(() => this.setState({ show: true }), 500);
     },
     render() {

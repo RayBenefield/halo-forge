@@ -1,17 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import path from 'path';
-import webpack from 'webpack';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BabiliPlugin = require("babili-webpack-plugin");
 
 const BUILD_DIR = path.resolve(__dirname, 'build/');
 const APP_DIR = path.resolve(__dirname, 'src/');
 
 const config = {
+    devtool: 'source-map',
     entry: `${APP_DIR}/index.js`,
     resolve: {
-        extensions: ['', '.jsx', '.js', '.json'],
-        root: path.resolve(__dirname),
-        modulesDirectories: ['node_modules'],
+        alias: {
+            react: 'preact-compat',
+            'react-dom': 'preact-compat',
+            'react-addons-shallow-compare': 'shallow-compare',
+        },
+        extensions: ['.jsx', '.js', '.json'],
+        modules: [
+            'node_modules',
+            path.resolve(__dirname),
+        ],
     },
     output: {
         path: BUILD_DIR,
@@ -30,27 +39,39 @@ const config = {
             { from: `${APP_DIR}/browserconfig.xml` },
             { from: `${APP_DIR}/icons`, to: `${BUILD_DIR}/icons` },
         ]),
+        new webpack.optimize.AggressiveMergingPlugin(),
+        //new BabiliPlugin(),
     ],
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 include: APP_DIR,
-                loaders: ['react-hot', 'babel'],
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        ["es2015", { "modules": false }],
+                        "react",
+                    ],
+                },
             },
             {
                 test: /\.json$/,
-                loaders: ['json'],
+                loaders: ['json-loader'],
+                include: path.resolve(__dirname, 'data'),
             },
             {
                 test: /\.html$/,
-                loader: 'file?name=[name].[ext]',
+                loader: 'file-loader',
+                query: {
+                    name: '[name].[ext]',
+                },
             },
             {
                 test: /\.css$/,
                 loaders: [
-                    'style?sourceMap',
-                    'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+                    'style-loader?sourceMap',
+                    'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
                 ],
                 exclude: [
                     path.resolve(`${APP_DIR}/index.css`),
@@ -59,7 +80,7 @@ const config = {
             },
             {
                 test: /\.css$/,
-                loader: 'file?name=[name].[ext]',
+                loader: 'file-loader?name=[name].[ext]',
                 include: [
                     path.resolve(`${APP_DIR}/index.css`),
                     path.resolve('node_modules'),
@@ -68,12 +89,12 @@ const config = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
                 ],
             },
         ],
     },
 };
 
-export default config;
+module.exports = config;
