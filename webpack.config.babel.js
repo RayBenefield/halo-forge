@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const BabiliPlugin = require("babili-webpack-plugin");
 
 const BUILD_DIR = path.resolve(__dirname, 'build/');
@@ -41,6 +42,7 @@ const config = {
         ]),
         new webpack.optimize.AggressiveMergingPlugin(),
         //new BabiliPlugin(),
+        new OfflinePlugin(),
     ],
     module: {
         rules: [
