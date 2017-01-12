@@ -42,7 +42,11 @@ const config = {
         ]),
         new webpack.optimize.AggressiveMergingPlugin(),
         //new BabiliPlugin(),
-        new OfflinePlugin(),
+        new OfflinePlugin({
+            ServiceWorker: {
+                entry: `${APP_DIR}/sw.js`,
+            },
+        }),
     ],
     module: {
         rules: [
@@ -56,11 +60,6 @@ const config = {
                         "react",
                     ],
                 },
-            },
-            {
-                test: /\.json$/,
-                loaders: ['json-loader'],
-                include: path.resolve(__dirname, 'data'),
             },
             {
                 test: /\.html$/,
