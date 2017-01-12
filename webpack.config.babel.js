@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require("babili-webpack-plugin");
 
 const BUILD_DIR = path.resolve(__dirname, 'build/');
@@ -34,13 +35,16 @@ const config = {
             },
         }),
         new CopyWebpackPlugin([
-            { from: `${APP_DIR}/index.html` },
             { from: `${APP_DIR}/manifest.json` },
             { from: `${APP_DIR}/browserconfig.xml` },
             { from: `${APP_DIR}/icons`, to: `${BUILD_DIR}/icons` },
         ]),
         new webpack.optimize.AggressiveMergingPlugin(),
         new BabiliPlugin(),
+        new HtmlWebpackPlugin({
+            template: `${APP_DIR}/index.html`,
+            inject: true,
+        }),
         new OfflinePlugin({
             ServiceWorker: {
                 entry: `${APP_DIR}/sw.js`,
@@ -58,13 +62,6 @@ const config = {
                         ["es2015", { "modules": false }],
                         "react",
                     ],
-                },
-            },
-            {
-                test: /\.html$/,
-                loader: 'file-loader',
-                query: {
-                    name: '[name].[ext]',
                 },
             },
             {
