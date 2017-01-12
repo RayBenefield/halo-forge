@@ -3,7 +3,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="normalize.css">
-        <link rel="stylesheet" href="index.css">
         <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="icons/favicon-194x194.png" sizes="194x194">
@@ -16,9 +15,82 @@
         <meta name="msapplication-TileColor" content="#303030">
         <meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
         <meta name="theme-color" content="#303030">
+        <style>
+body {
+    overflow: hidden;
+    margin: 0px;
+    background-color: #303030;
+}
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
+.grey-text { color: rgba(255, 255, 255, 0.541176); }
+.white { color: rgb(255, 255, 255); }
+.bg-grey-800 { background-color: rgb(66, 66, 66); }
+
+.roboto { font-family: Roboto, sans-serif; }
+
+.fw5 { font-weight: 500; }
+
+.di { display: inline; }
+
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.flex-auto {
+    flex: 1 1 auto;
+    min-width: 0; /* 1 */
+    min-height: 0; /* 1 */
+}
+
+.overflow-auto { overflow: auto; }
+.overflow-y-scroll { overflow-y: scroll; }
+.overflow-x-hidden { overflow-x: hidden; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+
+.fl { float: left; }
+
+.w-25 { width: 25%; }
+
+.h-100 { height: 100%; }
+.h-1-5 { height: 1.5rem; }
+.h-7 { height: 7rem; }
+
+.top-075 { top: 0.75rem; }
+.bottom-05 { bottom: 0.5rem; }
+.right-1 { right: 1rem; }
+
+.pa3 { padding: 1rem; }
+.pt2 { padding-top: 0.5rem; }
+.pt4 { padding-top: 1.5rem; }
+.pl2 { padding-left: 0.5rem; }
+.pr4 { padding-right: 1.5rem; }
+
+.m-auto { margin: auto; }
+.mt2 { margin-top: 0.5rem; }
+
+.v-top { vertical-align: top; }
+.v-mid { vertical-align: middle; }
+
+.z-depth-0 { box-shadow: none !important; }
+.z-depth-1 { box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+.z-depth-1-5 { box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2); }
+.z-depth-2 { box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3); }
+.z-depth-3 { box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3); }
+.z-depth-4 { box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3); }
+.z-depth-5 { box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3); }
+
+.br1 { border-radius: 0.125rem; }
+
+.z-5 { z-index: 5; }
+        </style>
     </head>
     <body>
         <div id="app" />
-        <script src="bundle.js" type="text/javascript"></script>
+            <script src="bundle.js" type="text/javascript"></script>
     </body>
 </html>
