@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:1/12/2017, 4:49:33 AM
+#ver:1/12/2017, 4:55:27 AM
 #plugin:4.5.4
 
 CACHE:
@@ -18,12 +18,12 @@ CACHE:
 ../icons/android-chrome-36x36.png
 ../icons/android-chrome-384x384.png
 ../icons/android-chrome-48x48.png
-../icons/android-chrome-72x72.png
 ../icons/android-chrome-512x512.png
+../icons/android-chrome-72x72.png
 ../icons/android-chrome-96x96.png
 ../icons/apple-touch-icon-114x114-precomposed.png
-../icons/apple-touch-icon-114x114.png
 ../icons/apple-touch-icon-120x120-precomposed.png
+../icons/apple-touch-icon-114x114.png
 ../icons/apple-touch-icon-120x120.png
 ../icons/apple-touch-icon-144x144-precomposed.png
 ../icons/apple-touch-icon-144x144.png
@@ -40,8 +40,8 @@ CACHE:
 ../icons/apple-touch-icon-76x76-precomposed.png
 ../icons/apple-touch-icon-76x76.png
 ../icons/apple-touch-icon-precomposed.png
-../icons/apple-touch-icon.png
 ../icons/favicon-16x16.png
+../icons/apple-touch-icon.png
 ../icons/favicon-194x194.png
 ../icons/favicon-32x32.png
 ../icons/favicon.ico
@@ -49,8 +49,8 @@ CACHE:
 ../icons/mstile-150x150.png
 ../icons/mstile-310x150.png
 ../icons/mstile-310x310.png
-../icons/safari-pinned-tab.svg
 ../icons/mstile-70x70.png
+../icons/safari-pinned-tab.svg
 
 NETWORK:
 *
