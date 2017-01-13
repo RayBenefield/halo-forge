@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 export default connect(
     (state, ownProps) => ({
-        style: _.extend({}, ownProps.style, state.layout.item),
+        style: _.extend({}, ownProps.style, { width: 320, height: 120 }),
         id: ownProps.post.id,
     }),
     dispatch => ({ dispatch }),
