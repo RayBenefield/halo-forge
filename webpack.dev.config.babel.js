@@ -9,7 +9,7 @@ const BUILD_DIR = path.resolve(__dirname, 'build/');
 const APP_DIR = path.resolve(__dirname, 'src/');
 
 const config = {
-    devtool: 'source-map',
+    devtool: 'eval',
     entry: `${APP_DIR}/index.js`,
     resolve: {
         alias: {
@@ -30,7 +30,7 @@ const config = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production'),
+                NODE_ENV: JSON.stringify('development'),
             },
         }),
         new CopyWebpackPlugin([
@@ -38,12 +38,16 @@ const config = {
             { from: `${APP_DIR}/browserconfig.xml` },
             { from: `${APP_DIR}/icons`, to: `${BUILD_DIR}/icons` },
         ]),
-        new webpack.optimize.AggressiveMergingPlugin(),
         new HtmlWebpackPlugin({
             template: `${APP_DIR}/index.html`,
             inject: true,
         }),
         new OfflinePlugin({
+            caches: {
+                main: ['index.html', 'bundle.*.js', 'sw.js', 'normalize.css'],
+                optional: ['*.png', '*.ico', '*.svg', 'manifest.json', 'browserconfig.xml'],
+            },
+            changed: 'hash',
             ServiceWorker: {
                 entry: `${APP_DIR}/sw.js`,
             },
