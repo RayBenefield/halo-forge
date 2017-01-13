@@ -21,12 +21,13 @@
         "npm": ">=1.4.3"
     },
     "scripts": {
-        "dev": "webpack-dev-server --hot --inline",
+        "dev": "webpack-dev-server --config webpack.dev.config.babel.js --hot --inline",
         "test": "jest --watch",
         "lint": "eslint -c .eslintrc.json src/",
-        "build": "webpack",
+        "build": "webpack --config webpack.dev.config.babel.js",
+        "build:prod": "webpack --config webpack.prod.config.babel.js",
         "clean": "rimraf dist",
-        "deploy": "yarn run build && gh-pages -d build",
+        "deploy": "yarn run build:prod && gh-pages -d build",
         "patch": "npm version patch -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "minor": "npm version minor -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "major": "npm version major -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit"
