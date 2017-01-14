@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from 'classnames';
 import Feed from 'src/components/Feed';
 import equip from './equip';
 
@@ -13,7 +14,7 @@ const Content = ({ isFetching, posts, postCount, lastUpdated }) => (
         {postCount > 0 &&
             <div>
                 {lastUpdated &&
-                    <sub className="pa3 top-075 grey-text">
+                    <sub className={classes("pa3", "top-075", "grey-text")}>
                         Last updated at {new Date(lastUpdated).toLocaleTimeString()}
                     </sub>
                 }

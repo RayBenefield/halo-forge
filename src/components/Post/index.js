@@ -1,5 +1,6 @@
 import _ from 'underscore';
 import React from 'react';
+import classes from 'classnames';
 import equip from './equip';
 import animate from './animate';
 import SiteAttribution from './site-attribution';
@@ -45,22 +46,22 @@ const Post = React.createClass({
         const sourceProps = _.pick(post, 'source', 'sourceImage', 'sourceUrl', 'title', 'added');
 
         return (
-            <div className="m-auto">
+            <div className={classes("m-auto")}>
                 <div
                     onTouchMove={this.move}
                     onTouchEnd={this.swiped}
                     onTouchStart={this.start}
-                    className="relative mt2 z-depth-2 roboto white bg-grey-800 br1"
+                    className={classes("relative", "mt2", "z-depth-2", "roboto", "white", "bg-grey-800", "br1")}
                     style={_.extend({
                         transform: show ? `translateX(${right}px)` : 'translate(-400px)',
                         transition,
                         opacity: show ? opacity : 0,
                     }, _.omit(style, 'opacity', 'height'))}
                 >
-                    <a href={post.url} className="roboto fw5">
-                        <div className="overflow-auto">
-                            <img src={post.image} alt={post.title} className="pa3 pr4 fl w-25" />
-                            <div className="v-top pa3">
+                    <a href={post.url} className={classes("roboto fw5")}>
+                        <div className={classes("overflow-auto")}>
+                            <img src={post.image} alt={post.title} className={classes("pa3", "pr4", "fl", "w-25")} />
+                            <div className={classes("v-top", "pa3")}>
                                 {post.title}
                                 <SiteAttribution {...sourceProps} />
                             </div>

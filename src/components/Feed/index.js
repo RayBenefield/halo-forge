@@ -1,5 +1,6 @@
 import _ from 'underscore';
 import React from 'react';
+import classes from 'classnames';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import Post from 'src/components/Post';
 import equip from './equip';
@@ -17,7 +18,7 @@ const Feed = ({ style, posts, added }) => {
     });
 
     return (
-        <ReactTransitionGroup className="flex flex-column overflow-y-scroll pt2">
+        <ReactTransitionGroup className={classes("flex", "flex-column", "overflow-y-scroll", "pt2")}>
             {_.values(postCards)}
         </ReactTransitionGroup>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from 'classnames'
 import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import { fetchPosts } from 'src/actions';
@@ -9,14 +10,14 @@ import Content from 'src/components/Content';
 const Layout = ({ dispatch, selectedSource }) => {
     dispatch(fetchPosts(selectedSource));
     return (
-        <div className="flex flex-column h-100">
-            <div className="h-7">
+        <div className={classes("flex", "flex-column", "h-100")}>
+            <div className={classes("h-7")}>
                 <Header />
-                <Paper className="relative z-5" zDepth={4}>
+                <Paper className={classes("relative", "z-5" )} zDepth={4}>
                     <Picker />
                 </Paper>
             </div>
-            <div className="relative h-100 overflow-x-hidden overflow-y-scroll flex-auto">
+            <div className={classes("relative", "h-100", "overflow-x-hidden", "overflow-y-scroll", "flex-auto")}>
                 <Content />
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from 'classnames';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
@@ -6,8 +7,8 @@ import FilterIcon from 'material-ui/svg-icons/content/filter-list';
 import equip from './equip';
 
 const Filter = ({ status, filter }) => (
-    <div className="di">
-        <sub className="grey-text">{status}</sub>
+    <div className={classes("di")}>
+        <sub className={classes("grey-text")}>{status}</sub>
         <IconMenu
             iconButtonElement={<IconButton><FilterIcon /></IconButton>}
             onChange={filter}
