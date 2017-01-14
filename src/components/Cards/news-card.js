@@ -49,7 +49,7 @@ const NewsCard = React.createClass({
                 onTouchMove={this.move}
                 onTouchEnd={this.swiped}
                 onTouchStart={this.start}
-                className={classes("relative", "mt2", "z-depth-2", "roboto", "white", "bg-grey-800", "br1")}
+                className={classes("relative", "mt2", "z-depth-2", "roboto", "white-text", "bg-grey-800", "br1")}
                 style={_.extend({
                     transform: show ? `translateX(${right}px)` : 'translate(-400px)',
                     transition,
