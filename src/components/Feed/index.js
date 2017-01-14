@@ -3,6 +3,7 @@ import React from 'react';
 import classes from 'classnames';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import Post from 'src/components/Post';
+import NewsCard from 'src/components/Cards/news-card';
 import equip from './equip';
 
 const Feed = ({ style, posts, added }) => {
@@ -13,7 +14,9 @@ const Feed = ({ style, posts, added }) => {
             added,
         };
         return (
-            <Post key={post.id} {...props} />
+            <Post key={post.id}>
+                <NewsCard {...props} />
+            </Post>
         );
     });
 
