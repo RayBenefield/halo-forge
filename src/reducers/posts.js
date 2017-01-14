@@ -11,7 +11,7 @@ const removeSourceIds = (toRemove, posts) =>
 export default (state = { }, action) => {
     switch (action.type) {
         case REHYDRATE:
-            return action.payload.posts;
+            return action.payload.posts || state;
         case RECEIVE_POSTS: {
             const existingPosts = getSourceIds(action.source, _.values(state));
             const newPosts = removeSourceIds(existingPosts, action.posts);
