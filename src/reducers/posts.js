@@ -1,5 +1,6 @@
 import _ from 'underscore';
 import uuid from 'node-uuid';
+import { REHYDRATE } from 'redux-persist/constants';
 import { RECEIVE_POSTS } from 'src/actions';
 
 const getSourceIds = (source, posts) =>
@@ -9,6 +10,8 @@ const removeSourceIds = (toRemove, posts) =>
 
 export default (state = { }, action) => {
     switch (action.type) {
+        case REHYDRATE:
+            return action.payload.posts;
         case RECEIVE_POSTS: {
             const existingPosts = getSourceIds(action.source, _.values(state));
             const newPosts = removeSourceIds(existingPosts, action.posts);

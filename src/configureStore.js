@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist'
 import { createEpicMiddleware } from 'redux-observable';
 import createLogger from 'redux-logger';
 import rootReducer from 'src/reducers';
@@ -16,9 +17,11 @@ export default function configureStore(preloadedState) {
         preloadedState,
         composeEnhancers(applyMiddleware(
             epicMiddleware,
-            loggerMiddleware
+            loggerMiddleware,
         )),
+        autoRehydrate(),
     );
+    persistStore(store);
 
     // Enable Webpack hot module replacement for reducers
     if (module.hot) {

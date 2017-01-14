@@ -5,6 +5,8 @@ import Root from 'src/containers/Root';
 import 'normalize.css';
 
 require('offline-plugin/runtime').install();
+require('preact/devtools');
+
 injectTapEventPlugin();
 
 render(<Root />, document.getElementById('app'));
