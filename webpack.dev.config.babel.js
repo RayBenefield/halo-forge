@@ -43,11 +43,6 @@ const config = {
             inject: true,
         }),
         new OfflinePlugin({
-            caches: {
-                main: ['index.html', 'bundle.*.js', 'sw.js', 'normalize.css'],
-                optional: ['*.png', '*.ico', '*.svg', 'manifest.json', 'browserconfig.xml'],
-            },
-            changed: 'hash',
             ServiceWorker: {
                 entry: `${APP_DIR}/sw.js`,
             },
