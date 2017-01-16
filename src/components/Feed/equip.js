@@ -1,10 +1,12 @@
-import _ from 'underscore';
+import values from 'lodash/values';
+import assign from 'lodash/assign';
+import sortBy from 'lodash/sortby';
 import { connect } from 'react-redux';
 import { getVisibleItems } from 'src/selectors';
 
 export default connect(
     (state, ownProps) => ({
-        posts: _.sortBy(_.values(getVisibleItems(state)), 'added').reverse(),
-        style: _.extend(ownProps.style, { width: 320, height: 120 }),
+        posts: sortBy(values(getVisibleItems(state)), 'added').reverse(),
+        style: assign(ownProps.style, { width: 320, height: 120 }),
     }),
 );

@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import fetch from 'isomorphic-fetch';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';

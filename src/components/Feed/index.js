@@ -1,4 +1,5 @@
-import _ from 'underscore';
+import map from 'lodash/map';
+import values from 'lodash/values';
 import React from 'react';
 import classes from 'classnames';
 import ReactTransitionGroup from 'react-addons-transition-group';
@@ -7,7 +8,7 @@ import NewsCard from 'src/components/Cards/news-card';
 import equip from './equip';
 
 const Feed = ({ style, posts, added }) => {
-    const postCards = _.map(posts, (post) => {
+    const postCards = map(posts, (post) => {
         const props = {
             post,
             style,
@@ -22,7 +23,7 @@ const Feed = ({ style, posts, added }) => {
 
     return (
         <ReactTransitionGroup className={classes("flex", "flex-column", "overflow-y-scroll", "pt2")}>
-            {_.values(postCards)}
+            {values(postCards)}
         </ReactTransitionGroup>
     );
 };

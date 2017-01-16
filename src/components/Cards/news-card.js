@@ -1,4 +1,6 @@
-import _ from 'underscore';
+import assign from 'lodash/assign';
+import pick from 'lodash/pick';
+import omit from 'lodash/omit';
 import React from 'react';
 import classes from 'classnames';
 import equip from './equip';
@@ -42,7 +44,7 @@ const NewsCard = React.createClass({
         this.add = add;
         this.drop = drop;
         const { right, transition, opacity } = this.state;
-        const sourceProps = _.pick(post, 'source', 'sourceImage', 'sourceUrl', 'title', 'added');
+        const sourceProps = pick(post, 'source', 'sourceImage', 'sourceUrl', 'title', 'added');
 
         return (
             <div
@@ -50,11 +52,11 @@ const NewsCard = React.createClass({
                 onTouchEnd={this.swiped}
                 onTouchStart={this.start}
                 className={classes("relative", "mt2", "z-depth-2", "roboto", "white-text", "bg-grey-800", "br1")}
-                style={_.extend({
+                style={assign({
                     transform: show ? `translateX(${right}px)` : 'translate(-400px)',
                     transition,
                     opacity: show ? opacity : 0,
-                }, _.omit(style, 'opacity', 'height'))}
+                }, omit(style, 'opacity', 'height'))}
             >
                 <a href={post.url} className={classes("roboto fw5")}>
                     <div className={classes("overflow-auto")}>

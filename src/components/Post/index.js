@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import React from 'react';
 import classes from 'classnames';
 import animate from './animate';
