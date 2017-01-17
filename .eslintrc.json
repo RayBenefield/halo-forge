@@ -1,10 +1,20 @@
 {
-    "extends": "airbnb",
+    "extends": [
+        "airbnb",
+        "plugin:lodash/recommended"
+    ],
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "webpack.dev.config.babel.js"
+            }
+        }
+    },
     "plugins": [
+        "lodash",
         "react",
         "jsx-a11y",
-        "import",
-        "import/resolver"
+        "import"
     ],
     "globals": {
         "document": true,
@@ -20,6 +30,10 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-indent-props": 0,
         "react/prefer-es6-class": 0,
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "jsx-a11y/no-static-element-interactions": 0,
+        "lodash/prefer-lodash-method": [2, {
+            "ignoreObjects": ["React\\.Children"]
+        }]
     }
 }

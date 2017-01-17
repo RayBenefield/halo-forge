@@ -1,6 +1,6 @@
 import values from 'lodash/values';
 import assign from 'lodash/assign';
-import sortBy from 'lodash/sortby';
+import sortBy from 'lodash/sortBy';
 import { connect } from 'react-redux';
 import { getVisibleItems } from 'src/selectors';
 

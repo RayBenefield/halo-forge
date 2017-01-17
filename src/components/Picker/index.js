@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from 'classnames';
+import map from 'lodash/map';
 import equip from './equip';
 
 const Picker = React.createClass({
@@ -10,14 +11,14 @@ const Picker = React.createClass({
         this.setState({ show: !this.state.show });
     },
     render() {
-        const { value, onChange, options } = this.props;
+        const { value, options } = this.props;
         return (
-            <div className={classes("w-100", "bg-grey-800", "roboto")} onClick={this.show}>
-                <div className={classes("pa2", "pl3")}>{value}</div>
+            <div className={classes('w-100', 'bg-grey-800', 'roboto')} onClick={this.show}>
+                <div className={classes('pa2', 'pl3')}>{value}</div>
                 <hr />
-                <div className={classes("di")}>
-                    {this.state.show && options.map(option =>
-                        <div className={classes("pa2", "pl3")} onClick={(e) => console.log(e)}>{option}</div>
+                <div className={classes('di')}>
+                    {this.state.show && map(options, option =>
+                        <div className={classes('pa2', 'pl3')}>{option}</div>
                     )}
                 </div>
             </div>

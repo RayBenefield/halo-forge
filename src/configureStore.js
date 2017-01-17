@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, autoRehydrate } from 'redux-persist'
+import { persistStore, autoRehydrate } from 'redux-persist';
 import { createEpicMiddleware } from 'redux-observable';
 import createLogger from 'redux-logger';
 import rootReducer from 'src/reducers';

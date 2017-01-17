@@ -51,17 +51,17 @@ const NewsCard = React.createClass({
                 onTouchMove={this.move}
                 onTouchEnd={this.swiped}
                 onTouchStart={this.start}
-                className={classes("relative", "mt2", "z-depth-2", "roboto", "white-text", "bg-grey-800", "br1")}
+                className={classes('relative', 'mt2', 'z-depth-2', 'roboto', 'white-text', 'bg-grey-800', 'br1')}
                 style={assign({
                     transform: show ? `translateX(${right}px)` : 'translate(-400px)',
                     transition,
                     opacity: show ? opacity : 0,
                 }, omit(style, 'opacity', 'height'))}
             >
-                <a href={post.url} className={classes("roboto fw5")}>
-                    <div className={classes("overflow-auto")}>
-                        <img src={post.image} alt={post.title} className={classes("pa3", "pr4", "fl", "w-25")} />
-                        <div className={classes("v-top", "pa3")}>
+                <a href={post.url} className={classes('roboto fw5')}>
+                    <div className={classes('overflow-auto')}>
+                        <img src={post.image} alt={post.title} className={classes('pa3', 'pr4', 'fl', 'w-25')} />
+                        <div className={classes('v-top', 'pa3')}>
                             {post.title}
                             <SiteAttribution {...sourceProps} />
                         </div>

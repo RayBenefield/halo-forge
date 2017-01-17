@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 import React from 'react';
 import { render } from 'react-dom';
 import injectTapEventPlugin from 'preact-tap-event-plugin';

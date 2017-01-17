@@ -3,14 +3,15 @@ import assign from 'lodash/assign';
 import reject from 'lodash/reject';
 import values from 'lodash/values';
 import includes from 'lodash/includes';
-import fromPairs from 'lodash/frompairs';
-import cloneDeep from 'lodash/clonedeep';
+import fromPairs from 'lodash/fromPairs';
+import cloneDeep from 'lodash/cloneDeep';
+import filter from 'lodash/filter';
 import uuid from 'node-uuid';
 import { REHYDRATE } from 'redux-persist/constants';
 import { RECEIVE_POSTS } from 'src/actions';
 
 const getSourceIds = (source, posts) =>
-    posts.filter(post => post.source === source).map(post => post.sourceId);
+    map(filter(posts, ['post.source', source]), 'post.sourceId');
 const removeSourceIds = (toRemove, posts) =>
     reject(posts, post => includes(toRemove, post.sourceId));
 
@@ -21,7 +22,7 @@ export default (state = { }, action) => {
         case RECEIVE_POSTS: {
             const existingPosts = getSourceIds(action.source, values(state));
             const newPosts = removeSourceIds(existingPosts, action.posts);
-            return Object.assign(
+            return assign(
                 {},
                 state,
                 fromPairs(map(newPosts, (item) => {

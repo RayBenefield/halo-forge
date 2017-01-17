@@ -6,15 +6,16 @@ import 'rxjs/add/operator/switchMap';
 import { REQUEST_POSTS, RECEIVE_POSTS } from 'src/actions';
 import parsers from 'src/parsers';
 
-const fetchSubreddit = subreddit => {
+const fetchSubreddit = (subreddit) => {
     const request = fetch(`https://www.reddit.com/r/${subreddit}.json`)
         .then(response => response.json());
     return Observable.from(request);
-}
+};
 
 export default action$ =>
     action$.ofType(REQUEST_POSTS)
         .switchMap(action =>
+            // eslint-disable-next-line lodash/prefer-lodash-method
             fetchSubreddit(action.subreddit)
                 .map(json => ({
                     type: RECEIVE_POSTS,

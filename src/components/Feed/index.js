@@ -22,7 +22,7 @@ const Feed = ({ style, posts, added }) => {
     });
 
     return (
-        <ReactTransitionGroup className={classes("flex", "flex-column", "overflow-y-scroll", "pt2")}>
+        <ReactTransitionGroup className={classes('flex', 'flex-column', 'overflow-y-scroll', 'pt2')}>
             {values(postCards)}
         </ReactTransitionGroup>
     );
