@@ -11,7 +11,7 @@ import { REHYDRATE } from 'redux-persist/constants';
 import { RECEIVE_POSTS } from 'src/actions';
 
 const getSourceIds = (source, posts) =>
-    map(filter(posts, ['post.source', source]), 'post.sourceId');
+    map(filter(posts, ['source', source]), 'sourceId');
 const removeSourceIds = (toRemove, posts) =>
     reject(posts, post => includes(toRemove, post.sourceId));
 
