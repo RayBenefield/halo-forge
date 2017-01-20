@@ -36,11 +36,10 @@ export function receivePosts(source, posts) {
 }
 
 export function fetchPosts(source) {
-    if (source === 'halo' || source === 'forge') {
+    if (source === 'halo') {
         return {
             type: REQUEST_POSTS,
-            source: 'reddit',
-            subreddit: source,
+            source: 'halo',
         };
     }
     return receivePosts(source, []);

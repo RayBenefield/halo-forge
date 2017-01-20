@@ -16,10 +16,10 @@ export default action$ =>
     action$.ofType(REQUEST_POSTS)
         .switchMap(action =>
             // eslint-disable-next-line lodash/prefer-lodash-method
-            fetchSubreddit(action.subreddit)
+            fetchSubreddit(action.source)
                 .map(json => ({
                     type: RECEIVE_POSTS,
-                    source: action.subreddit,
-                    posts: parsers[action.source](action.subreddit, json),
+                    source: action.source,
+                    posts: parsers[action.source](action.source, json),
                 }))
         );

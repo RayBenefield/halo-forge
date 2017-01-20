@@ -3,7 +3,7 @@ import rHaloImage from 'src/r-halo-image.png';
 import rHaloSource from 'src/r-halo.png';
 
 export default {
-    reddit: (subreddit, results) => map(results.data.children, (child) => {
+    halo: (subreddit, results) => map(results.data.children, (child) => {
         const post = child.data;
         // eslint-disable-next-line no-nested-ternary
         const image = post.preview
