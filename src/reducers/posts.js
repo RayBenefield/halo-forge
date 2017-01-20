@@ -6,7 +6,6 @@ import includes from 'lodash/includes';
 import fromPairs from 'lodash/fromPairs';
 import cloneDeep from 'lodash/cloneDeep';
 import filter from 'lodash/filter';
-import uuid from 'node-uuid';
 import { REHYDRATE } from 'redux-persist/constants';
 import { RECEIVE_POSTS } from 'src/actions';
 
@@ -26,7 +25,7 @@ export default (state = { }, action) => {
                 {},
                 state,
                 fromPairs(map(newPosts, (item) => {
-                    const newId = uuid.v4();
+                    const newId = `${action.source}::${item.sourceId}`;
                     return [newId, assign(item, { id: newId })];
                 }))
             );

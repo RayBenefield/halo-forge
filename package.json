@@ -39,7 +39,6 @@
         "firebase": "^3.6.5",
         "isomorphic-fetch": "^2.2.1",
         "lodash": "^4.17.4",
-        "node-uuid": "^1.4.7",
         "normalize.css": "^5.0.0",
         "offline-plugin": "^4.5.4",
         "preact": "^7.1.0",
