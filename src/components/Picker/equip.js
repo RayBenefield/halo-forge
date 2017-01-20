@@ -4,7 +4,7 @@ import { selectSource } from 'src/actions';
 export default connect(
     state => ({
         value: state.selectedSource,
-        options: ['halo', 'forge', 'reactjs', 'frontend'],
+        options: ['halo', 'firebase'],
     }),
     dispatch => ({
         onChange: (nextSource) => {

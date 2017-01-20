@@ -18,7 +18,7 @@ export default (state = { }, action) => {
         case REHYDRATE:
             return action.payload.posts || state;
         case RECEIVE_POSTS: {
-            const existingPosts = getSourceIds(action.source, values(state));
+            const existingPosts = getSourceIds(action.source, values(state[action.source]));
             const newPosts = removeSourceIds(existingPosts, action.posts);
             return assign(
                 {},
