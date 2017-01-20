@@ -1,6 +1,7 @@
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SOURCE = 'SELECT_SOURCE';
+export const CHANGE_STATUS = 'CHANGE_STATUS';
 export const FILTER = 'FILTER';
 
 export const NEW = 'NEW';
@@ -43,4 +44,22 @@ export function fetchPosts(source) {
         };
     }
     return receivePosts(source, []);
+}
+
+export function addPost(source, id) {
+    return {
+        type: CHANGE_STATUS,
+        id,
+        source,
+        status: ADDED,
+    };
+}
+
+export function dropPost(source, id) {
+    return {
+        type: CHANGE_STATUS,
+        id,
+        source,
+        status: DROPPED,
+    };
 }

@@ -4,7 +4,6 @@ import reject from 'lodash/reject';
 import values from 'lodash/values';
 import includes from 'lodash/includes';
 import fromPairs from 'lodash/fromPairs';
-import cloneDeep from 'lodash/cloneDeep';
 import filter from 'lodash/filter';
 import { REHYDRATE } from 'redux-persist/constants';
 import { RECEIVE_POSTS } from 'src/actions';
@@ -36,11 +35,6 @@ export default (state = { }, action) => {
                     ),
                 },
             );
-        }
-        case 'CHANGE_STATUS': {
-            const newState = cloneDeep(state);
-            newState[action.id].status = action.status;
-            return newState;
         }
         default:
             return state;
