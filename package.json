@@ -97,18 +97,14 @@
     },
     "babel": {
         "presets": [
-            [
-                "es2015",
-                {
-                    "modules": false
-                }
-            ],
+            "es2015",
             "react"
         ]
     },
     "jest": {
+        "transform": {".*": "./node_modules/babel-jest"},
         "notify": true,
-        "rootDir": "src",
+        "testPathDirs": ["src"],
         "testEnvironment": "node"
     }
 }
