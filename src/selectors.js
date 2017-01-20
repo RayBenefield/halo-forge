@@ -1,23 +1,21 @@
 /* eslint-disable import/prefer-default-export */
-import map from 'lodash/map';
+import omit from 'lodash/omit';
 import pick from 'lodash/pick';
-import values from 'lodash/values';
-import filter from 'lodash/filter';
+import pickBy from 'lodash/pickBy';
+import keys from 'lodash/keys';
 import { createSelector } from 'reselect';
 
+const getSelectedSource = state => state.selectedSource;
+const getSources = state => state.sources;
 const getItems = state => state.posts;
 const getFilter = state => state.filter;
 
+export const filterBySourceStatus = (source, sources, statusFilter, posts) => {
+    if (statusFilter === 'NEW') return omit(posts[source], keys(sources[source].posts));
+    return pick(posts[source], keys(pickBy(sources[source].posts, o => o === statusFilter)));
+};
+
 export const getVisibleItems = createSelector(
-    [getItems, getFilter],
-    (posts, statusFilter) => pick(
-        posts,
-        map(
-            filter(
-                values(posts),
-                ['status', statusFilter],
-            ),
-            'id',
-        ),
-    ),
+    [getSelectedSource, getSources, getFilter, getItems],
+    filterBySourceStatus,
 );

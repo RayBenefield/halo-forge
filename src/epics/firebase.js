@@ -15,7 +15,6 @@ export default ({ dispatch }) => {
     firebase.database().ref('posts').on('child_added', snap => dispatch({
         type: RECEIVE_POSTS,
         source: 'firebase',
-        subreddit: 'ray',
         posts: [snap.val()],
     }));
 };

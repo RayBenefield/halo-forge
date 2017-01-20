@@ -19,8 +19,7 @@ export default action$ =>
             fetchSubreddit(action.subreddit)
                 .map(json => ({
                     type: RECEIVE_POSTS,
-                    source: action.source,
-                    subreddit: action.subreddit,
+                    source: action.subreddit,
                     posts: parsers[action.source](action.subreddit, json),
                 }))
         );

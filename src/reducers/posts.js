@@ -24,10 +24,17 @@ export default (state = { }, action) => {
             return assign(
                 {},
                 state,
-                fromPairs(map(newPosts, (item) => {
-                    const newId = `${action.source}::${item.sourceId}`;
-                    return [newId, assign(item, { id: newId })];
-                }))
+                {
+                    [action.source]: fromPairs(
+                        map(
+                            newPosts,
+                            item => [
+                                item.sourceId,
+                                assign(item, { id: item.sourceId }),
+                            ],
+                        ),
+                    ),
+                },
             );
         }
         case 'CHANGE_STATUS': {

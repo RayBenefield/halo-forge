@@ -1,5 +1,4 @@
 import map from 'lodash/map';
-import { NEW } from 'src/actions';
 import rHaloImage from 'src/r-halo-image.png';
 import rHaloSource from 'src/r-halo.png';
 
@@ -14,12 +13,10 @@ export default {
             )
             : rHaloImage;
         return {
-            status: NEW,
             url: post.url,
             title: post.title,
             image,
-            source: 'reddit',
-            subreddit,
+            source: subreddit,
             sourceId: post.id,
             sourceImage: rHaloSource,
             sourceUrl: `https://www.reddit.com/${post.permalink}`,
