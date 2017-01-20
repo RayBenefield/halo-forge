@@ -11,10 +11,10 @@ const Filter = React.createClass({
         this.setState({ show: !this.state.show });
     },
     render() {
-        const { status } = this.props;
+        const { status, filter } = this.props;
         const options = ['NEW', 'ADDED', 'DROPPED'];
         return (
-            <div className={classes('di')}>
+            <div className={classes('di', 'relative')}>
                 <sub className={classes('grey-text')}>{status}</sub>
                 <svg
                     onClick={this.show}
@@ -31,9 +31,15 @@ const Filter = React.createClass({
                 >
                     <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
                 </svg>
-                <div className={classes('di', 'bg-grey-800', 'robot', 'white-text')}>
+                <div className={classes('di', 'bg-grey-800', 'robot', 'white-text', 'absolute', 'z-9999')}>
                     {this.state.show && map(options, option =>
-                        <div className={classes('pa2', 'pl3')}>{option}</div>
+                        <div
+                            className={classes('pa2', 'pl3')}
+                            onClick={() => {
+                                this.show();
+                                filter(option);
+                            }}
+                        >{option}</div>
                     )}
                 </div>
             </div>

@@ -10,6 +10,6 @@ export default connect(
     }),
     ({ status }, { dispatch }) => ({
         status,
-        filter: (e, value) => dispatch(filter(value)),
+        filter: value => dispatch(filter(value)),
     }),
 );
