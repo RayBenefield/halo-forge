@@ -45,20 +45,22 @@ export function fetchPosts(source) {
     return receivePosts(source, []);
 }
 
-export function addPost(source, id) {
+export function addPost(source, post) {
     return {
         type: CHANGE_STATUS,
-        id,
+        id: post.id,
         source,
         status: ADDED,
+        post,
     };
 }
 
-export function dropPost(source, id) {
+export function dropPost(source, post) {
     return {
         type: CHANGE_STATUS,
-        id,
+        id: post.id,
         source,
         status: DROPPED,
+        post,
     };
 }

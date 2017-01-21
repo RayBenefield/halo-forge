@@ -2,10 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'src/configureStore';
 import Layout from 'src/containers/Layout';
-import attachFirebase from 'src/epics/firebase';
+import { setupFirebase } from 'src/epics/firebase';
 
 const store = configureStore();
-attachFirebase(store);
+setupFirebase(store);
 
 export default () => (
     <Provider store={store}>

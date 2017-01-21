@@ -1,7 +1,8 @@
 import { combineEpics } from 'redux-observable';
 import reddit from './reddit';
-import './firebase';
+import firebase from './firebase';
 
 export default combineEpics(
     reddit,
+    firebase,
 );
