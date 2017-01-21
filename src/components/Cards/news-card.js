@@ -19,60 +19,67 @@ const NewsCard = React.createClass({
             this.setState({ transition: fast, opacity: 0.8 });
             this.isTouching = true;
         }
+        if (!this.isTouching && !this.isMousing && e.type === 'mousedown') {
+            this.origin = { x: e.clientX, y: e.clientY };
+            this.setState({ transition: fast, opacity: 0.8 });
+            this.isMousing = true;
+        }
+        window.addEventListener('mouseup', this.swiped);
+        window.addEventListener('mousemove', this.move);
     },
     move(e) {
+        let current;
         if (this.isTouching && e.type === 'touchmove') {
-            const touch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-            if (!this.isScrolling && !this.isDragging) {
-                const xDistance =
-                    Math.abs(touch.x - this.origin.x) - Math.abs(touch.y - this.origin.y);
-                const isHorizontal = xDistance > 0;
-                if (isHorizontal) {
-                    this.isScrolling = false;
-                    this.isDragging = true;
-                } else {
-                    this.isScrolling = true;
-                    this.isDragging = false;
-                }
+            current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        } else if (this.isMousing && e.type === 'mousemove') {
+            current = { x: e.clientX, y: e.clientY };
+        } else {
+            return;
+        }
+        if (!this.isScrolling && !this.isDragging) {
+            const xDistance =
+                Math.abs(current.x - this.origin.x) - Math.abs(current.y - this.origin.y);
+            const isHorizontal = xDistance > 0;
+            if (isHorizontal) {
+                this.isScrolling = false;
+                this.isDragging = true;
+            } else {
+                this.isScrolling = true;
+                this.isDragging = false;
+                this.setState({ right: 0, transition: smooth, opacity: 1 });
             }
-            if (this.isDragging) {
-                e.preventDefault();
-                const delta = touch.x - this.origin.x;
-                this.setState({ right: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
-            }
+        }
+        if (this.isDragging) {
+            e.preventDefault();
+            const delta = current.x - this.origin.x;
+            this.setState({ right: delta, opacity: (1 - Math.abs(delta) / 400) - 0.2 });
         }
     },
+    clicked(e) {
+        if (this.isScrolling) return;
+        e.preventDefault();
+    },
     swiped(e) {
-        if (this.isTouching && e.type === 'touchend') {
+        if (!this.isScrolling) {
+            e.preventDefault();
             if (this.state.right > 50) {
                 this.add();
-                this.origin = 0;
                 this.setState({ right: 400, transition: smooth, opacity: 0 });
-
-                this.isMousing = false;
-                this.isTouching = false;
-                this.isScrolling = false;
-                this.isDragging = false;
-                return;
             } else if (this.state.right < -50) {
                 this.drop();
-                this.origin = 0;
                 this.setState({ right: -400, transition: smooth, opacity: 0 });
-
-                this.isMousing = false;
-                this.isTouching = false;
-                this.isScrolling = false;
-                this.isDragging = false;
-                return;
+            } else {
+                this.setState({ right: 0, transition: smooth, opacity: 1 });
             }
-            this.origin = 0;
-            this.setState({ right: 0, transition: smooth, opacity: 1 });
         }
 
+        this.origin = 0;
         this.isMousing = false;
         this.isTouching = false;
         this.isScrolling = false;
         this.isDragging = false;
+        window.removeEventListener('mousemove', this.move);
+        window.removeEventListener('mouseup', this.swiped);
     },
     render() {
         const { post, style, add, drop, show = false } = this.props;
@@ -84,8 +91,7 @@ const NewsCard = React.createClass({
         return (
             <div
                 onMouseDown={this.start}
-                onMouseUp={this.swiped}
-                onMouseMove={this.move}
+                onClick={this.clicked}
                 onTouchMove={this.move}
                 onTouchEnd={this.swiped}
                 onTouchStart={this.start}
