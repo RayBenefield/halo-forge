@@ -1,7 +1,8 @@
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SOURCE = 'SELECT_SOURCE';
-export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const ADD_POST = 'ADD_POST';
+export const DROP_POST = 'DROP_POST';
 export const FILTER = 'FILTER';
 
 export const NEW = 'NEW';
@@ -47,20 +48,18 @@ export function fetchPosts(source) {
 
 export function addPost(source, post) {
     return {
-        type: CHANGE_STATUS,
+        type: ADD_POST,
         id: post.id,
         source,
-        status: ADDED,
         post,
     };
 }
 
 export function dropPost(source, post) {
     return {
-        type: CHANGE_STATUS,
+        type: DROP_POST,
         id: post.id,
         source,
-        status: DROPPED,
         post,
     };
 }

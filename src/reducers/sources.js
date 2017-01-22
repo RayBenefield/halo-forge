@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 import { REHYDRATE } from 'redux-persist/constants';
-import { CHANGE_STATUS } from 'src/actions';
+import { ADD_POST, DROP_POST, ADDED, DROPPED } from 'src/actions';
 
 const defaultState = {
     halo: {
@@ -15,9 +15,14 @@ export default (state = defaultState, action) => {
     switch (action.type) {
         case REHYDRATE:
             return action.payload.sources || state;
-        case CHANGE_STATUS: {
+        case ADD_POST: {
             const newState = cloneDeep(state);
-            newState[action.source].posts[action.id] = action.status;
+            newState[action.source].posts[action.id] = ADDED;
+            return newState;
+        }
+        case DROP_POST: {
+            const newState = cloneDeep(state);
+            newState[action.source].posts[action.id] = DROPPED;
             return newState;
         }
         default:

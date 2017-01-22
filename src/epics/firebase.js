@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
 import 'firebase/database';
-import { RECEIVE_POSTS, CHANGE_STATUS } from 'src/actions';
+import { RECEIVE_POSTS, ADD_POST } from 'src/actions';
 
 const config = {
     apiKey: 'AIzaSyBByzrI7whW8oh19RGSc__5rmhTjqq9uTs',
@@ -22,7 +22,7 @@ export const setupFirebase = ({ dispatch }) => {
 
 export default action$ =>
     // eslint-disable-next-line lodash/prefer-lodash-method
-    action$.ofType(CHANGE_STATUS)
+    action$.ofType(ADD_POST)
         .map((action) => {
             action.post.added = new Date();
             firebase.database().ref(`posts/${action.id}`).set(action.post);
