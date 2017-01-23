@@ -56,7 +56,7 @@ const NewsCard = React.createClass({
         }
     },
     clicked(e) {
-        if (this.isScrolling) return;
+        if (!this.wasDragging) return;
         e.preventDefault();
     },
     swiped(e) {
@@ -73,6 +73,7 @@ const NewsCard = React.createClass({
             }
         }
 
+        this.wasDragging = this.isDragging;
         this.origin = 0;
         this.isMousing = false;
         this.isTouching = false;
