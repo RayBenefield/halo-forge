@@ -16,7 +16,7 @@ export default {
             url: post.url,
             title: post.title,
             image,
-            source: subreddit,
+            source: 'reddit::halo',
             sourceId: post.id,
             sourceImage: rHaloSource,
             sourceUrl: `https://www.reddit.com/${post.permalink}`,

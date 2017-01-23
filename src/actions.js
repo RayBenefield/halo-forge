@@ -37,7 +37,7 @@ export function receivePosts(source, posts) {
 }
 
 export function fetchPosts(source) {
-    if (source === 'halo') {
+    if (source === 'reddit::halo') {
         return {
             type: REQUEST_POSTS,
             source: 'halo',

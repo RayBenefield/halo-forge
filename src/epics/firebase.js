@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
 import 'firebase/database';
-import { RECEIVE_POSTS, ADD_POST } from 'src/actions';
+import { RECEIVE_POSTS, ADD_POST, DROP_POST } from 'src/actions';
 
 const config = {
     apiKey: 'AIzaSyBByzrI7whW8oh19RGSc__5rmhTjqq9uTs',
@@ -13,18 +13,31 @@ const config = {
 firebase.initializeApp(config);
 
 export const setupFirebase = ({ dispatch }) => {
-    firebase.database().ref('posts').on('child_added', snap => dispatch({
-        type: RECEIVE_POSTS,
-        source: 'firebase',
-        posts: [snap.val()],
-    }));
+    const qurRef = firebase.database().ref('Qur/Ray Benefield/halo-forge/');
+    qurRef.on('child_added', (qurSnap) => {
+        qurRef.child(qurSnap.key).on('child_added', sourceSnap => dispatch({
+            type: RECEIVE_POSTS,
+            source: qurSnap.key,
+            posts: [sourceSnap.val()],
+        }));
+    });
 };
 
-export default action$ =>
+export const AddFirebasePost = action$ =>
     // eslint-disable-next-line lodash/prefer-lodash-method
     action$.ofType(ADD_POST)
         .map((action) => {
             action.post.added = new Date();
-            firebase.database().ref(`posts/${action.id}`).set(action.post);
-            return { type: 'SAVED' };
+            firebase.database().ref(`Qur/Ray Benefield/halo-forge/reddit::halo/${action.id}`).set(action.post);
+            firebase.database().ref(`Qu/Ray Benefield/halo-forge/posts/reddit::halo/${action.id}`).set('ADDED');
+            return { type: 'Qurd' };
+        });
+
+export const DropFirebasePost = action$ =>
+    // eslint-disable-next-line lodash/prefer-lodash-method
+    action$.ofType(DROP_POST)
+        .map((action) => {
+            action.post.added = new Date();
+            firebase.database().ref(`Qu/Ray Benefield/halo-forge/posts/reddit::halo/${action.id}`).set('DROPPED');
+            return { type: 'Qurd' };
         });

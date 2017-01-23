@@ -4,7 +4,7 @@ import { selectSource } from 'src/actions';
 export default connect(
     state => ({
         value: state.selectedSource,
-        options: ['halo', 'firebase'],
+        options: ['reddit::halo', 'firebase'],
     }),
     dispatch => ({
         onChange: (nextSource) => {
