@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/mergeMap';
 import { REQUEST_POSTS, RECEIVE_POSTS } from 'src/actions';
 import parsers from 'src/parsers';
 
@@ -14,12 +14,12 @@ const fetchSubreddit = (subreddit) => {
 
 export default action$ =>
     action$.ofType(REQUEST_POSTS)
-        .switchMap(action =>
+        .mergeMap(action =>
             // eslint-disable-next-line lodash/prefer-lodash-method
             fetchSubreddit(action.source)
                 .map(json => ({
                     type: RECEIVE_POSTS,
-                    source: action.source,
+                    source: `reddit::${action.source}`,
                     posts: parsers[action.source](action.source, json),
                 }))
         );
