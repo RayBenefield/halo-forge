@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { selectSource } from 'src/actions';
+import { selectQu } from 'src/actions';
 
 export default connect(
     state => ({
-        value: state.selectedSource,
+        value: state.selectedQu,
         options: ['reddit::halo', 'firebase'],
     }),
     dispatch => ({
-        onChange: (nextSource) => {
-            dispatch(selectSource(nextSource));
+        onChange: (nextQu) => {
+            dispatch(selectQu(nextQu));
         },
     })
 );

@@ -1,8 +1,8 @@
-import { filterBySourceStatus } from './selectors';
+import { filterByQuStatus } from './selectors';
 
-describe('Filter by Source & Status', () => {
-    it('should grab all posts for a source', () => {
-        const result = filterBySourceStatus(
+describe('Filter by Qu & Status', () => {
+    it('should grab all posts for a Qu', () => {
+        const result = filterByQuStatus(
             'halo',
             { halo: { posts: {} } },
             'NEW',
@@ -12,8 +12,8 @@ describe('Filter by Source & Status', () => {
         expect(result).toEqual({ 12345: {}, 23456: {}, 34567: {} });
     });
 
-    it('should grab unhandled posts for a source', () => {
-        const result = filterBySourceStatus(
+    it('should grab unhandled posts for a Qu', () => {
+        const result = filterByQuStatus(
             'halo',
             { halo: { posts: { 12345: '' } } },
             'NEW',
@@ -23,8 +23,8 @@ describe('Filter by Source & Status', () => {
         expect(result).toEqual({ 23456: {}, 34567: {} });
     });
 
-    it('should grab unhandled posts for a source', () => {
-        const result = filterBySourceStatus(
+    it('should grab unhandled posts for a Qu', () => {
+        const result = filterByQuStatus(
             'halo',
             { halo: { posts: { 12345: 'ADDED' } } },
             'ADDED',

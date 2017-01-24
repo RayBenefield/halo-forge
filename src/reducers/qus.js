@@ -15,15 +15,15 @@ const defaultState = {
 export default (state = defaultState, action) => {
     switch (action.type) {
         case REHYDRATE:
-            return action.payload.sources || state;
+            return action.payload.qus || state;
         case ADD_POST: {
             const newState = cloneDeep(state);
-            newState[action.source].posts[action.id] = ADDED;
+            newState[action.qu].posts[action.id] = ADDED;
             return newState;
         }
         case DROP_POST: {
             const newState = cloneDeep(state);
-            newState[action.source].posts[action.id] = DROPPED;
+            newState[action.qu].posts[action.id] = DROPPED;
             return newState;
         }
         default:

@@ -1,9 +1,9 @@
-import { SELECT_SOURCE } from 'src/actions';
+import { SELECT_QU } from 'src/actions';
 
 export default (state = 'reddit::halo', action) => {
     switch (action.type) {
-        case SELECT_SOURCE:
-            return action.source;
+        case SELECT_QU:
+            return action.qu;
         default:
             return state;
     }

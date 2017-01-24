@@ -4,16 +4,16 @@ import { fetchPosts } from 'src/actions';
 
 export default connect(
     state => ({
-        selectedSource: state.selectedSource,
-        sources: state.sources[state.selectedSource].sources,
+        selectedQu: state.selectedQu,
+        sources: state.qus[state.selectedQu].sources,
     }),
     dispatch => ({
         dispatch,
     }),
-    ({ selectedSource, sources }, { dispatch }) => ({
+    ({ selectedQu, sources }, { dispatch }) => ({
         refresh: () => {
             forEach(sources, (source) => {
-                dispatch(fetchPosts(selectedSource, source));
+                dispatch(fetchPosts(selectedQu, source));
             });
         },
     })

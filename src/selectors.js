@@ -6,17 +6,17 @@ import keys from 'lodash/keys';
 import { createSelector } from 'reselect';
 import { NEW } from 'src/actions';
 
-const getSelectedSource = state => state.selectedSource;
-const getSources = state => state.sources;
+const getSelectedQu = state => state.selectedQu;
+const getQus = state => state.qus;
 const getItems = state => state.posts;
 const getFilter = state => state.filter;
 
-export const filterBySourceStatus = (source, sources, statusFilter, posts) => {
-    if (statusFilter === NEW) return omit(posts[source], keys(sources[source].posts));
-    return pick(posts[source], keys(pickBy(sources[source].posts, o => o === statusFilter)));
+export const filterByQuStatus = (qu, qus, statusFilter, posts) => {
+    if (statusFilter === NEW) return omit(posts[qu], keys(qus[qu].posts));
+    return pick(posts[qu], keys(pickBy(qus[qu].posts, o => o === statusFilter)));
 };
 
 export const getVisibleItems = createSelector(
-    [getSelectedSource, getSources, getFilter, getItems],
-    filterBySourceStatus,
+    [getSelectedQu, getQus, getFilter, getItems],
+    filterByQuStatus,
 );

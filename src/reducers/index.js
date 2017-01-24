@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 import filter from './filter';
-import selectedSource from './selectedSource';
+import selectedQu from './selectedQu';
 import posts from './posts';
-import sources from './sources';
+import qus from './qus';
 import isFetching from './isFetching';
 
 const rootReducer = combineReducers({
     posts,
     isFetching,
-    selectedSource,
+    selectedQu,
     filter,
-    sources,
+    qus,
 });
 
 export default rootReducer;

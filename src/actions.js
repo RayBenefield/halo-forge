@@ -1,6 +1,6 @@
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
-export const SELECT_SOURCE = 'SELECT_SOURCE';
+export const SELECT_QU = 'SELECT_QU';
 export const ADD_POST = 'ADD_POST';
 export const DROP_POST = 'DROP_POST';
 export const FILTER = 'FILTER';
@@ -20,10 +20,10 @@ export function filter(status = NEW) {
     };
 }
 
-export function selectSource(source) {
+export function selectQu(qu) {
     return {
-        type: SELECT_SOURCE,
-        source,
+        type: SELECT_QU,
+        qu,
     };
 }
 
@@ -46,20 +46,20 @@ export function fetchPosts(qu, source) {
     return receivePosts(qu, []);
 }
 
-export function addPost(source, post) {
+export function addPost(qu, post) {
     return {
         type: ADD_POST,
         id: post.id,
-        source,
+        qu,
         post,
     };
 }
 
-export function dropPost(source, post) {
+export function dropPost(qu, post) {
     return {
         type: DROP_POST,
         id: post.id,
-        source,
+        qu,
         post,
     };
 }
