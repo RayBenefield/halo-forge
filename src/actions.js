@@ -36,14 +36,11 @@ export function receivePosts(source, posts) {
     };
 }
 
-export function fetchPosts(qu, source) {
-    if (qu === 'reddit::halo') {
-        return {
-            type: REQUEST_POSTS,
-            source,
-        };
-    }
-    return receivePosts(qu, []);
+export function fetchPosts(source) {
+    return {
+        type: REQUEST_POSTS,
+        source,
+    };
 }
 
 export function addPost(qu, post) {

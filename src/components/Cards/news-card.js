@@ -87,7 +87,7 @@ const NewsCard = React.createClass({
         this.add = add;
         this.drop = drop;
         const { right, transition, opacity } = this.state;
-        const sourceProps = pick(post, 'source', 'sourceImage', 'sourceUrl', 'title', 'added');
+        const sourceProps = pick(post, 'source', 'title', 'added');
 
         return (
             <div

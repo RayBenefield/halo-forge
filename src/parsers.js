@@ -15,11 +15,13 @@ const redditParser = (subreddit, results) => map(results.data.children, (child) 
         url: post.url,
         title: post.title,
         image,
-        source: `reddit::${subreddit}`,
-        sourceId: post.id,
-        sourceImage: rHaloSource,
-        sourceUrl: `https://www.reddit.com/${post.permalink}`,
         added: post.created_utc * 1000,
+        source: {
+            name: `/r/${subreddit}`,
+            id: post.id,
+            image: rHaloSource,
+            url: `https://www.reddit.com/${post.permalink}`,
+        },
     };
 });
 

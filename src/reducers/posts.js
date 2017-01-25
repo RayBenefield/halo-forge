@@ -8,9 +8,9 @@ import cloneDeep from 'lodash/cloneDeep';
 import { REHYDRATE } from 'redux-persist/constants';
 import { RECEIVE_POSTS } from 'src/actions';
 
-const getSourceIds = posts => map(posts, 'sourceId');
+const getSourceIds = posts => map(posts, 'source.id');
 const removeSourceIds = (toRemove, posts) =>
-    reject(posts, post => includes(toRemove, post.sourceId));
+    reject(posts, post => includes(toRemove, post.source.id));
 
 export default (state = { }, action) => {
     switch (action.type) {
@@ -28,8 +28,8 @@ export default (state = { }, action) => {
                     map(
                         newPosts,
                         item => [
-                            item.sourceId,
-                            assign(item, { id: item.sourceId }),
+                            item.source.id,
+                            assign(item, { id: item.source.id }),
                         ],
                     ),
                 )

@@ -3,7 +3,7 @@ import { REHYDRATE } from 'redux-persist/constants';
 import { ADD_POST, DROP_POST, ADDED, DROPPED } from 'src/actions';
 
 const defaultState = {
-    'reddit::halo': {
+    'halo-forge': {
         sources: ['reddit::halo', 'reddit::forge'],
         posts: {},
     },
