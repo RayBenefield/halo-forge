@@ -16,10 +16,10 @@ export default (qu, qus, statusFilter, posts) => {
                 sources,
                 source => mapKeys(
                     omit(
-                        posts[source],
-                        keys(qus[qu].posts[source])
+                        posts[source.prefix],
+                        keys(qus[qu].posts[source.prefix])
                     ),
-                    (value, key) => `${source}::${key}`,
+                    (value, key) => `${source.prefix}::${key}`,
                 ),
             )
         , extend);
@@ -27,14 +27,14 @@ export default (qu, qus, statusFilter, posts) => {
 
     return reduce(map(sources, source => mapKeys(
         pick(
-            posts[source],
+            posts[source.prefix],
             keys(
                 pickBy(
-                    qus[qu].posts[source],
+                    qus[qu].posts[source.prefix],
                     o => o === statusFilter
                 )
             )
         ),
-        (value, key) => `${source}::${key}`,
+        (value, key) => `${source.prefix}::${key}`,
     )), extend);
 };

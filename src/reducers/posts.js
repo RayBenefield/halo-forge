@@ -18,12 +18,12 @@ export default (state = { }, action) => {
             return action.payload.posts || state;
         case RECEIVE_POSTS: {
             const newState = cloneDeep(state);
-            const existingPosts = getSourceIds(values(state[action.source]));
+            const existingPosts = getSourceIds(values(state[action.source.prefix]));
             const newPosts = removeSourceIds(existingPosts, action.posts);
 
-            newState[action.source] = assign(
+            newState[action.source.prefix] = assign(
                 {},
-                state[action.source],
+                state[action.source.prefix],
                 fromPairs(
                     map(
                         newPosts,

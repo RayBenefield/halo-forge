@@ -4,7 +4,20 @@ import { ADD_POST, DROP_POST, ADDED, DROPPED } from 'src/actions';
 
 const defaultState = {
     'halo-forge': {
-        sources: ['reddit::halo', 'reddit::forge'],
+        sources: [
+            {
+                prefix: 'reddit::halo',
+                source: 'reddit',
+                subreddit: 'halo',
+                name: '/r/halo',
+            },
+            {
+                prefix: 'reddit::forge',
+                source: 'reddit',
+                subreddit: 'forge',
+                name: '/r/forge',
+            },
+        ],
         posts: {},
     },
     firebase: {
