@@ -16,10 +16,10 @@ export default action$ =>
     action$.ofType(REQUEST_POSTS)
         .mergeMap(action =>
             // eslint-disable-next-line lodash/prefer-lodash-method
-            fetchSubreddit(action.source)
+            fetchSubreddit(action.source.split('::')[1])
                 .map(json => ({
                     type: RECEIVE_POSTS,
-                    source: `reddit::${action.source}`,
-                    posts: parsers[action.source](action.source, json),
+                    source: action.source,
+                    posts: parsers[action.source.split('::')[1]](action.source.split('::')[1], json),
                 }))
         );
