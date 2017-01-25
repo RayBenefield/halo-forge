@@ -1,4 +1,4 @@
-import { filterByQuStatus } from './selectors';
+import filterByQuStatus from './filter-by-qu-status';
 
 describe('Filter by Qu & Status', () => {
     it('should grab all posts for a Qu', () => {
