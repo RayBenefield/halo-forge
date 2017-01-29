@@ -6,12 +6,12 @@ export default connect(
     (state, ownProps) => ({
         style: assign({}, ownProps.style, { width: 320, height: 120 }),
         post: ownProps.post,
-        source: ownProps.post.source,
+        qu: state.selectedQu,
     }),
     dispatch => ({ dispatch }),
-    ({ source, post, style }, { dispatch }, ownProps) => assign({
+    ({ qu, post, style }, { dispatch }, ownProps) => assign({
         style,
-        add: () => dispatch(addPost(source, post)),
-        drop: () => dispatch(dropPost(source, post)),
+        add: () => dispatch(addPost(qu, post)),
+        drop: () => dispatch(dropPost(qu, post)),
     }, ownProps),
 );

@@ -18,7 +18,10 @@ const defaultState = {
                 name: '/r/forge',
             },
         ],
-        posts: {},
+        posts: {
+            'reddit::halo': {},
+            'reddit::forge': {},
+        },
     },
     firebase: {
         posts: {},
@@ -31,12 +34,12 @@ export default (state = defaultState, action) => {
             return action.payload.qus || state;
         case ADD_POST: {
             const newState = cloneDeep(state);
-            newState[action.qu].posts[action.id] = ADDED;
+            newState[action.qu].posts[action.post.source.prefix][action.id] = ADDED;
             return newState;
         }
         case DROP_POST: {
             const newState = cloneDeep(state);
-            newState[action.qu].posts[action.id] = DROPPED;
+            newState[action.qu].posts[action.post.source.prefix][action.id] = DROPPED;
             return newState;
         }
         default:

@@ -18,6 +18,7 @@ const redditParser = (subreddit, results) => map(results.data.children, (child) 
         added: post.created_utc * 1000,
         source: {
             name: `/r/${subreddit}`,
+            prefix: `reddit::${subreddit}`,
             id: post.id,
             image: rHaloSource,
             url: `https://www.reddit.com/${post.permalink}`,
