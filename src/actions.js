@@ -4,6 +4,8 @@ export const SELECT_QU = 'SELECT_QU';
 export const ADD_POST = 'ADD_POST';
 export const DROP_POST = 'DROP_POST';
 export const FILTER = 'FILTER';
+export const LOGIN = 'LOGIN';
+export const LOGGED_IN = 'LOGGED_IN';
 
 export const NEW = 'NEW';
 export const ADDED = 'ADDED';
@@ -12,6 +14,12 @@ export const DROPPED = 'DROPPED';
 // Statuses not yet uesed.
 // export const DELAYED = 'DELAYED';
 // export const SAVED = 'SAVED';
+
+export function login() {
+    return {
+        type: LOGIN,
+    };
+}
 
 export function filter(status = NEW) {
     return {
