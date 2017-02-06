@@ -1,7 +1,10 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 import 'firebase/database';
-import { RECEIVE_POSTS, ADD_POST, DROP_POST } from 'src/actions';
+import { LOGGED_IN, RECEIVE_POSTS, ADD_POST, DROP_POST } from 'src/actions';
 
 const config = {
     apiKey: 'AIzaSyBByzrI7whW8oh19RGSc__5rmhTjqq9uTs',
@@ -22,6 +25,16 @@ export const setupFirebase = ({ dispatch }) => {
         }));
     });
 };
+
+export const SignIntoFirebase = action$ =>
+    action$.ofType(LOGGED_IN)
+        .switchMap(({ profile: { firebaseTokens } }) =>
+            // eslint-disable-next-line lodash/prefer-lodash-method
+            Observable.fromPromise(
+                firebase.auth().signInWithCustomToken(firebaseTokens.idToken)
+            )
+                .map(() => ({ type: 'FIREBASED' }))
+        );
 
 export const AddFirebasePost = action$ =>
     // eslint-disable-next-line lodash/prefer-lodash-method
